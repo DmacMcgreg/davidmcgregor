@@ -1,0 +1,123 @@
+.footer {
+  position: relative;
+  background-color: var(--ink);
+  color: var(--paper);
+  overflow: hidden;
+}
+
+.container {
+  position: relative;
+  z-index: 1;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: var(--space-4xl) var(--gutter) var(--space-lg);
+}
+
+/* CTA Section */
+.cta {
+  text-align: center;
+  margin-bottom: var(--space-4xl);
+}
+
+.ctaTitle {
+  font-family: var(--font-display);
+  font-size: var(--text-display);
+  font-weight: 600;
+  margin-bottom: var(--space-md);
+  color: var(--paper);
+}
+
+.ctaText {
+  font-size: var(--text-body);
+  color: var(--muted-light);
+  margin-bottom: var(--space-xl);
+  max-width: 40ch;
+  margin-inline: auto;
+}
+
+/* Bottom Bar */
+.bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-md);
+  padding-top: var(--space-lg);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.copyright {
+  font-size: var(--text-small);
+  color: var(--muted);
+}
+
+.socialLinks {
+  display: flex;
+  gap: var(--space-lg);
+}
+
+.socialLink {
+  position: relative;
+  font-size: var(--text-small);
+  font-weight: 500;
+  color: var(--paper);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.socialLink::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background-color: var(--accent);
+  transition: width 0.3s var(--ease-out-expo);
+}
+
+.socialLink:hover {
+  color: var(--accent);
+}
+
+.socialLink:hover::after {
+  width: 100%;
+}
+
+.backToTop {
+  font-size: var(--text-small);
+  font-weight: 500;
+  color: var(--muted);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.backToTop:hover {
+  color: var(--accent);
+}
+
+/* Background Text */
+.backgroundText {
+  position: absolute;
+  bottom: -10%;
+  right: -5%;
+  font-family: var(--font-display);
+  font-size: clamp(15rem, 40vw, 40rem);
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.03);
+  line-height: 0.8;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .bottom {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .socialLinks {
+    order: -1;
+  }
+}

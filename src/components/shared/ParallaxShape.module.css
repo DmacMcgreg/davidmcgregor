@@ -1,0 +1,27 @@
+.shape {
+  position: absolute;
+  pointer-events: none;
+  will-change: transform;
+}
+
+.circle {
+  border-radius: 50%;
+}
+
+.ring {
+  border-radius: 50%;
+  border-style: solid;
+  background: transparent;
+}
+
+.line {
+  border-radius: 1px;
+}
+
+.dot {
+  border-radius: 50%;
+}
+
+.blob {
+  display: block;
+}

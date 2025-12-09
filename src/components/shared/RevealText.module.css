@@ -1,0 +1,14 @@
+.wrapper {
+  overflow: hidden;
+}
+
+.staggeredContainer {
+  display: flex;
+  flex-wrap: wrap;
+  overflow: hidden;
+}
+
+.staggeredItem {
+  display: inline-block;
+  will-change: transform, opacity;
+}

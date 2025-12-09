@@ -1,0 +1,151 @@
+.shapes {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: var(--z-shapes);
+}
+
+.shape {
+  position: absolute;
+  will-change: transform;
+}
+
+/* Large Ring - Top Right */
+.circle1 {
+  top: 5%;
+  right: 5%;
+  width: clamp(150px, 25vw, 300px);
+  height: clamp(150px, 25vw, 300px);
+}
+
+.circle1 svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* Filled Circle - Left */
+.circle2 {
+  top: 20%;
+  left: 8%;
+  width: clamp(60px, 10vw, 120px);
+  height: clamp(60px, 10vw, 120px);
+}
+
+.circle2 svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* Dots Cluster */
+.dots {
+  top: 15%;
+  left: 20%;
+  position: relative;
+  width: 60px;
+  height: 40px;
+}
+
+.dot {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background-color: var(--ink);
+  border-radius: 50%;
+}
+
+/* Diagonal Line */
+.line1 {
+  top: 35%;
+  right: 15%;
+  transform-origin: left center;
+}
+
+.lineInner {
+  width: clamp(100px, 15vw, 200px);
+  height: 2px;
+  background-color: var(--muted);
+  transform: rotate(-30deg);
+}
+
+/* Large Ring - Bottom Left */
+.ring {
+  bottom: 10%;
+  left: -5%;
+  width: clamp(200px, 35vw, 400px);
+  height: clamp(200px, 35vw, 400px);
+}
+
+.ring svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* Blob */
+.blob {
+  top: 40%;
+  right: 10%;
+  width: clamp(150px, 20vw, 250px);
+  height: clamp(150px, 20vw, 250px);
+}
+
+.blob svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* Small Accent Circle */
+.smallCircle {
+  bottom: 25%;
+  right: 25%;
+  width: 16px;
+  height: 16px;
+  background-color: var(--accent);
+  border-radius: 50%;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .circle1 {
+    top: 10%;
+    right: -5%;
+    width: 120px;
+    height: 120px;
+  }
+
+  .circle2 {
+    top: 15%;
+    left: 5%;
+    width: 50px;
+    height: 50px;
+  }
+
+  .dots {
+    display: none;
+  }
+
+  .line1 {
+    display: none;
+  }
+
+  .ring {
+    bottom: 5%;
+    left: -10%;
+    width: 180px;
+    height: 180px;
+  }
+
+  .blob {
+    top: 50%;
+    right: -5%;
+    width: 120px;
+    height: 120px;
+  }
+
+  .smallCircle {
+    width: 12px;
+    height: 12px;
+    bottom: 35%;
+    right: 20%;
+  }
+}

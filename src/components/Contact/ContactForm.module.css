@@ -1,0 +1,98 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
+}
+
+.field {
+  position: relative;
+}
+
+.label {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  transform-origin: left center;
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  color: var(--muted);
+  pointer-events: none;
+  transition: transform 0.2s ease;
+}
+
+.field:has(.textarea) .label {
+  top: var(--space-md);
+  transform: translateY(0);
+}
+
+.label.active {
+  pointer-events: auto;
+}
+
+.input {
+  width: 100%;
+  padding: var(--space-md) 0;
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  color: var(--ink);
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--muted-light);
+  outline: none;
+  transition: border-color 0.2s ease;
+  cursor: none;
+}
+
+@media (max-width: 768px) {
+  .input {
+    cursor: auto;
+  }
+}
+
+.input:focus {
+  border-color: var(--ink);
+}
+
+.textarea {
+  resize: vertical;
+  min-height: 150px;
+  padding-top: var(--space-lg);
+}
+
+.underline {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: var(--accent);
+  transform-origin: left center;
+}
+
+.submit {
+  margin-top: var(--space-md);
+}
+
+.loading {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+}
+
+.statusMessage {
+  padding: var(--space-md);
+  border-radius: var(--border-radius);
+  font-size: var(--text-small);
+  text-align: center;
+}
+
+.success {
+  background-color: rgba(34, 197, 94, 0.1);
+  color: #16a34a;
+}
+
+.error {
+  background-color: rgba(239, 68, 68, 0.1);
+  color: #dc2626;
+}

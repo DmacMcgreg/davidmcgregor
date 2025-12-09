@@ -1,0 +1,155 @@
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: var(--space-4xl) var(--gutter);
+}
+
+.content {
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  max-width: 1200px;
+}
+
+.titleWrapper {
+  margin-bottom: var(--space-lg);
+}
+
+.title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  line-height: 0.9;
+}
+
+.firstName {
+  font-family: var(--font-display);
+  font-size: var(--text-hero);
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  color: var(--ink);
+}
+
+.lastName {
+  font-family: var(--font-serif);
+  font-size: calc(var(--text-hero) * 0.9);
+  font-weight: 400;
+  font-style: italic;
+  letter-spacing: -0.02em;
+  color: var(--accent);
+}
+
+.subtitleWrapper {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.subtitle {
+  font-family: var(--font-body);
+  font-size: var(--text-subheading);
+  font-weight: 400;
+  color: var(--muted);
+  line-height: 1.6;
+  margin-bottom: var(--space-xl);
+}
+
+.cta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-md);
+  flex-wrap: wrap;
+}
+
+/* Scroll Indicator */
+.scrollIndicator {
+  position: absolute;
+  bottom: var(--space-xl);
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.scrollText {
+  font-family: var(--font-body);
+  font-size: var(--text-caption);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+}
+
+.scrollLine {
+  width: 1px;
+  height: 40px;
+  background-color: var(--muted-light);
+  position: relative;
+  overflow: hidden;
+}
+
+.scrollDot {
+  width: 3px;
+  height: 8px;
+  background-color: var(--accent);
+  border-radius: 2px;
+  position: absolute;
+  left: -1px;
+  top: 0;
+}
+
+/* Accent Background Text */
+.accentText {
+  position: absolute;
+  bottom: 5%;
+  left: -5%;
+  font-family: var(--font-display);
+  font-size: clamp(8rem, 25vw, 25rem);
+  font-weight: 700;
+  color: transparent;
+  -webkit-text-stroke: 1px var(--muted-light);
+  opacity: 0.3;
+  line-height: 0.8;
+  pointer-events: none;
+  user-select: none;
+  white-space: nowrap;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .hero {
+    padding-top: calc(var(--space-4xl) + 60px);
+  }
+
+  .firstName,
+  .lastName {
+    font-size: clamp(3rem, 15vw, 6rem);
+  }
+
+  .lastName {
+    font-size: clamp(2.5rem, 13vw, 5.5rem);
+  }
+
+  .subtitle {
+    font-size: var(--text-body);
+  }
+
+  .cta {
+    flex-direction: column;
+  }
+
+  .accentText {
+    font-size: clamp(5rem, 20vw, 12rem);
+    bottom: 10%;
+  }
+
+  .scrollIndicator {
+    bottom: var(--space-lg);
+  }
+}

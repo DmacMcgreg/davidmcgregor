@@ -1,0 +1,238 @@
+.page {
+  padding-top: 100px;
+}
+
+/* Hero */
+.hero {
+  position: relative;
+  padding: var(--space-3xl) var(--gutter);
+  padding-top: var(--space-2xl);
+  overflow: hidden;
+}
+
+.shapes {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.heroContent {
+  position: relative;
+  z-index: 1;
+  max-width: var(--content-width);
+  margin: 0 auto;
+}
+
+.backLink {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  font-family: var(--font-body);
+  font-size: var(--text-small);
+  color: var(--muted);
+  text-decoration: none;
+  margin-bottom: var(--space-xl);
+  transition: color 0.2s ease;
+}
+
+.backLink:hover {
+  color: var(--ink);
+}
+
+.category {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-size: var(--text-caption);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--accent);
+  margin-bottom: var(--space-md);
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: var(--text-display);
+  font-weight: 600;
+  line-height: 1.1;
+  margin-bottom: var(--space-lg);
+}
+
+.description {
+  font-family: var(--font-body);
+  font-size: var(--text-subheading);
+  color: var(--muted);
+  max-width: 55ch;
+  line-height: 1.6;
+  margin-bottom: var(--space-xl);
+}
+
+/* Meta */
+.meta {
+  display: flex;
+  gap: var(--space-2xl);
+  margin-bottom: var(--space-xl);
+  padding-top: var(--space-lg);
+  border-top: 1px solid var(--muted-light);
+}
+
+.metaItem {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2xs);
+}
+
+.metaLabel {
+  font-family: var(--font-body);
+  font-size: var(--text-caption);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+}
+
+.metaValue {
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  color: var(--ink);
+}
+
+/* Actions */
+.actions {
+  display: flex;
+  gap: var(--space-md);
+  flex-wrap: wrap;
+}
+
+/* Image Section */
+.imageSection {
+  padding: 0 var(--gutter) var(--space-3xl);
+}
+
+.imageWrapper {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  aspect-ratio: 16 / 9;
+  border-radius: var(--border-radius-lg);
+  overflow: hidden;
+  background-color: var(--paper-dark);
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.imagePlaceholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--ink) 0%, var(--ink-light) 100%);
+}
+
+.placeholderText {
+  font-family: var(--font-display);
+  font-size: clamp(6rem, 15vw, 12rem);
+  font-weight: 700;
+  color: var(--paper);
+  opacity: 0.2;
+}
+
+/* Content */
+.content {
+  padding: var(--space-3xl) var(--gutter);
+  background-color: var(--paper-dark);
+}
+
+.contentInner {
+  max-width: var(--content-width);
+  margin: 0 auto;
+}
+
+.sectionTitle {
+  font-family: var(--font-display);
+  font-size: var(--text-heading);
+  font-weight: 600;
+  margin-bottom: var(--space-lg);
+}
+
+.contentText {
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  color: var(--muted);
+  line-height: 1.8;
+}
+
+/* Navigation */
+.navigation {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-top: 1px solid var(--muted-light);
+}
+
+.navLink {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  padding: var(--space-2xl) var(--gutter);
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.navLink:first-child {
+  border-right: 1px solid var(--muted-light);
+}
+
+.navLink:last-child {
+  text-align: right;
+}
+
+.navLink:hover {
+  background-color: var(--paper-dark);
+}
+
+.navLabel {
+  font-family: var(--font-body);
+  font-size: var(--text-caption);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+}
+
+.navTitle {
+  font-family: var(--font-display);
+  font-size: var(--text-heading);
+  font-weight: 600;
+  color: var(--ink);
+  transition: color 0.2s ease;
+}
+
+.navLink:hover .navTitle {
+  color: var(--accent);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .meta {
+    flex-direction: column;
+    gap: var(--space-md);
+  }
+
+  .navigation {
+    grid-template-columns: 1fr;
+  }
+
+  .navLink:first-child {
+    border-right: none;
+    border-bottom: 1px solid var(--muted-light);
+  }
+
+  .navLink:last-child {
+    text-align: left;
+  }
+}

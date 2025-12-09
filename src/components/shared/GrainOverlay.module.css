@@ -1,0 +1,13 @@
+.grain {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: var(--z-overlay);
+  opacity: 0.035;
+  mix-blend-mode: multiply;
+}
+
+.grain svg {
+  width: 100%;
+  height: 100%;
+}
