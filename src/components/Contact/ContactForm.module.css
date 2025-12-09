@@ -16,9 +16,9 @@
   transform-origin: left center;
   font-family: var(--font-body);
   font-size: var(--text-body);
-  color: var(--muted);
+  color: var(--text-muted);
   pointer-events: none;
-  transition: transform 0.2s ease;
+  transition: transform var(--duration-fast) var(--ease-primary);
 }
 
 .field:has(.textarea) .label {
@@ -35,13 +35,13 @@
   padding: var(--space-md) 0;
   font-family: var(--font-body);
   font-size: var(--text-body);
-  color: var(--ink);
+  color: var(--text-primary);
   background: transparent;
   border: none;
-  border-bottom: 1px solid var(--muted-light);
+  border-bottom: 1px solid var(--border);
   outline: none;
-  transition: border-color 0.2s ease;
-  cursor: none;
+  transition: border-color var(--duration-fast) var(--ease-primary);
+  cursor: var(--cursor-style, auto);
 }
 
 @media (max-width: 768px) {
@@ -51,7 +51,7 @@
 }
 
 .input:focus {
-  border-color: var(--ink);
+  border-color: var(--text-primary);
 }
 
 .textarea {

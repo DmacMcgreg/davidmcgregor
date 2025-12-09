@@ -1,106 +1,7 @@
 /* ==========================================================================
-   KINETIC EDITORIAL - Global Styles
+   Global Styles
+   Theme variables are defined in themes.css
    ========================================================================== */
-
-/* Fontshare Fonts */
-@font-face {
-  font-family: 'Clash Display';
-  src: url('/fonts/ClashDisplay-Variable.woff2') format('woff2');
-  font-weight: 200 700;
-  font-display: swap;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'Zodiak';
-  src: url('/fonts/Zodiak-Variable.woff2') format('woff2');
-  font-weight: 200 800;
-  font-display: swap;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'Switzer';
-  src: url('/fonts/Switzer-Variable.woff2') format('woff2');
-  font-weight: 100 900;
-  font-display: swap;
-  font-style: normal;
-}
-
-/* ==========================================================================
-   CSS Custom Properties
-   ========================================================================== */
-
-:root {
-  /* Typography */
-  --font-display: 'Clash Display', system-ui, sans-serif;
-  --font-serif: 'Zodiak', Georgia, serif;
-  --font-body: 'Switzer', system-ui, sans-serif;
-
-  /* Type Scale - Fluid */
-  --text-hero: clamp(4rem, 15vw, 14rem);
-  --text-display: clamp(2.5rem, 8vw, 7rem);
-  --text-heading: clamp(1.5rem, 4vw, 3rem);
-  --text-subheading: clamp(1.25rem, 2vw, 1.75rem);
-  --text-body: clamp(1rem, 1.2vw, 1.125rem);
-  --text-small: clamp(0.875rem, 1vw, 1rem);
-  --text-caption: clamp(0.75rem, 0.9vw, 0.875rem);
-
-  /* Colors */
-  --ink: #0D0D0D;
-  --ink-light: #1A1A1A;
-  --paper: #F5F2ED;
-  --paper-dark: #E8E4DD;
-  --accent: #FF4D00;
-  --accent-hover: #E64400;
-  --accent-alt: #2A3BFF;
-  --muted: #8B8680;
-  --muted-light: #B8B4AE;
-
-  /* Spacing Scale */
-  --space-3xs: 0.25rem;
-  --space-2xs: 0.5rem;
-  --space-xs: 0.75rem;
-  --space-sm: 1rem;
-  --space-md: 1.5rem;
-  --space-lg: 2rem;
-  --space-xl: 3rem;
-  --space-2xl: 5rem;
-  --space-3xl: 8rem;
-  --space-4xl: 13rem;
-
-  /* Layout */
-  --max-width: 1400px;
-  --content-width: 900px;
-  --gutter: clamp(1rem, 4vw, 3rem);
-
-  /* Animation */
-  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
-  --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
-  --ease-in-out-quart: cubic-bezier(0.76, 0, 0.24, 1);
-  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
-
-  --duration-instant: 0.1s;
-  --duration-fast: 0.2s;
-  --duration-medium: 0.4s;
-  --duration-slow: 0.6s;
-  --duration-slower: 0.8s;
-  --duration-slowest: 1.2s;
-
-  /* Z-Index Scale */
-  --z-behind: -1;
-  --z-base: 0;
-  --z-above: 1;
-  --z-shapes: 5;
-  --z-header: 100;
-  --z-overlay: 200;
-  --z-modal: 300;
-  --z-cursor: 9999;
-
-  /* Misc */
-  --border-radius: 4px;
-  --border-radius-lg: 8px;
-}
 
 /* ==========================================================================
    Reset & Base
@@ -139,11 +40,11 @@ body {
   font-family: var(--font-body);
   font-size: var(--text-body);
   font-weight: 400;
-  line-height: 1.6;
-  color: var(--ink);
-  background-color: var(--paper);
+  line-height: 1.7;
+  color: var(--text-primary);
+  background-color: var(--bg-primary);
   overflow-x: hidden;
-  cursor: none;
+  cursor: var(--cursor-style, auto);
 }
 
 @media (max-width: 768px) {
@@ -154,14 +55,14 @@ body {
 
 /* Selection */
 ::selection {
-  background-color: var(--accent);
-  color: var(--paper);
+  background-color: var(--selection-bg);
+  color: var(--selection-text);
 }
 
 /* Focus */
 :focus-visible {
   outline: 2px solid var(--accent);
-  outline-offset: 4px;
+  outline-offset: 3px;
 }
 
 /* ==========================================================================
@@ -169,21 +70,22 @@ body {
    ========================================================================== */
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-display);
+  font-family: var(--font-heading);
   font-weight: 600;
-  line-height: 1.1;
-  letter-spacing: -0.02em;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  color: var(--text-primary);
 }
 
 h1 {
+  font-family: var(--font-display);
   font-size: var(--text-hero);
-  font-weight: 700;
-  letter-spacing: -0.04em;
+  font-weight: 600;
+  letter-spacing: 0.02em;
 }
 
 h2 {
   font-size: var(--text-display);
-  font-weight: 600;
 }
 
 h3 {
@@ -196,11 +98,41 @@ h4 {
 
 p {
   max-width: 65ch;
+  color: var(--text-secondary);
 }
 
 a {
   color: inherit;
   text-decoration: none;
+}
+
+/* Labels/Overlines - Theme accent */
+.overline,
+.label {
+  font-family: var(--font-accent);
+  font-size: var(--text-caption);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--accent);
+}
+
+/* Code/Technical styling */
+code, pre {
+  font-family: var(--font-mono);
+  font-size: var(--text-mono);
+  background-color: var(--bg-tertiary);
+  border-radius: var(--border-radius);
+}
+
+code {
+  padding: 0.2em 0.4em;
+}
+
+pre {
+  padding: var(--space-md);
+  border-left: 2px solid var(--accent);
+  overflow-x: auto;
 }
 
 /* ==========================================================================
@@ -230,6 +162,38 @@ a {
   max-width: var(--content-width);
 }
 
+/* Divider line */
+.divider {
+  width: 100%;
+  height: 1px;
+  background-color: var(--accent);
+  opacity: 0.6;
+}
+
+/* Section backgrounds */
+.bg-primary {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+.bg-secondary {
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+}
+
+/* Gradient text utility (Neural Lux style, works subtly on Sovereign) */
+.gradient-text {
+  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-secondary) 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Glow text utility */
+.glow-text {
+  text-shadow: 0 0 20px var(--accent-glow), 0 0 40px var(--accent-glow);
+}
+
 /* ==========================================================================
    Custom Scrollbar
    ========================================================================== */
@@ -239,16 +203,16 @@ a {
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--paper);
+  background: var(--scrollbar-track);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--muted-light);
-  border-radius: 4px;
+  background: var(--scrollbar-thumb);
+  border-radius: var(--border-radius);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--muted);
+  background: var(--scrollbar-thumb-hover);
 }
 
 /* ==========================================================================
@@ -260,7 +224,7 @@ button {
   font-size: inherit;
   background: none;
   border: none;
-  cursor: none;
+  cursor: var(--cursor-style, pointer);
 }
 
 @media (max-width: 768px) {
@@ -285,4 +249,69 @@ img {
 
 ul, ol {
   list-style: none;
+}
+
+/* ==========================================================================
+   Framing Device - Corner accents (Sovereign style, adapts to theme)
+   ========================================================================== */
+
+.frame-corners {
+  position: relative;
+}
+
+.frame-corners::before,
+.frame-corners::after {
+  content: '';
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  border-color: var(--accent);
+  border-style: solid;
+  pointer-events: none;
+}
+
+.frame-corners::before {
+  top: 0;
+  left: 0;
+  border-width: 2px 0 0 2px;
+}
+
+.frame-corners::after {
+  bottom: 0;
+  right: 0;
+  border-width: 0 2px 2px 0;
+}
+
+/* ==========================================================================
+   Card Base Styles
+   ========================================================================== */
+
+.card {
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: var(--border-radius);
+  position: relative;
+  transition: transform var(--duration-medium) var(--ease-primary),
+              box-shadow var(--duration-medium) var(--ease-primary);
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--accent);
+  transition: width var(--duration-medium) var(--ease-primary);
+  border-radius: var(--border-radius) var(--border-radius) 0 0;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+}
+
+.card:hover::before {
+  width: 100%;
 }

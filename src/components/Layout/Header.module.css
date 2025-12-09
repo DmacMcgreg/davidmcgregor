@@ -6,13 +6,13 @@
   z-index: var(--z-header);
   padding: var(--space-md) 0;
   transition:
-    background-color 0.3s ease,
-    backdrop-filter 0.3s ease,
-    padding 0.3s ease;
+    background-color var(--duration-medium) var(--ease-primary),
+    backdrop-filter var(--duration-medium) var(--ease-primary),
+    padding var(--duration-medium) var(--ease-primary);
 }
 
 .header.scrolled {
-  background-color: rgba(245, 242, 237, 0.8);
+  background-color: var(--header-bg-scrolled);
   backdrop-filter: blur(20px);
   padding: var(--space-sm) 0;
 }
@@ -38,7 +38,7 @@
   font-family: var(--font-display);
   font-size: 1.5rem;
   font-weight: 700;
-  color: var(--ink);
+  color: var(--text-primary);
   letter-spacing: -0.02em;
 }
 
@@ -54,10 +54,10 @@
   font-family: var(--font-body);
   font-size: var(--text-small);
   font-weight: 500;
-  color: var(--ink);
+  color: var(--text-primary);
   text-decoration: none;
   padding: var(--space-2xs) 0;
-  transition: color 0.2s ease;
+  transition: color var(--duration-fast) var(--ease-primary);
 }
 
 .navLink::after {
@@ -68,7 +68,7 @@
   width: 0;
   height: 2px;
   background-color: var(--accent);
-  transition: width 0.3s var(--ease-out-expo);
+  transition: width var(--duration-medium) var(--ease-primary);
 }
 
 .navLink:hover::after,
@@ -80,9 +80,16 @@
   color: var(--accent);
 }
 
+/* Mobile Actions */
+.mobileActions {
+  display: none;
+  align-items: center;
+  gap: var(--space-xs);
+}
+
 /* Menu Toggle (Mobile) */
 .menuToggle {
-  display: none;
+  display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -91,7 +98,7 @@
   gap: 6px;
   background: none;
   border: none;
-  cursor: none;
+  cursor: var(--cursor-style, pointer);
   z-index: calc(var(--z-header) + 1);
 }
 
@@ -105,8 +112,8 @@
   display: block;
   width: 24px;
   height: 2px;
-  background-color: var(--ink);
-  transition: transform 0.3s var(--ease-out-expo);
+  background-color: var(--text-primary);
+  transition: transform var(--duration-medium) var(--ease-primary);
 }
 
 .menuToggle.open .menuLine:first-child {
@@ -122,7 +129,7 @@
   display: none;
   position: fixed;
   inset: 0;
-  background-color: var(--paper);
+  background-color: var(--bg-primary);
   z-index: var(--z-header);
   padding-top: 100px;
 }
@@ -140,9 +147,9 @@
   font-family: var(--font-display);
   font-size: var(--text-display);
   font-weight: 600;
-  color: var(--ink);
+  color: var(--text-primary);
   text-decoration: none;
-  transition: color 0.2s ease;
+  transition: color var(--duration-fast) var(--ease-primary);
 }
 
 .mobileNavLink:hover {
@@ -155,7 +162,7 @@
     display: none;
   }
 
-  .menuToggle {
+  .mobileActions {
     display: flex;
   }
 

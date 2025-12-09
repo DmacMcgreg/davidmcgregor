@@ -31,11 +31,11 @@
   font-size: var(--text-hero);
   font-weight: 700;
   letter-spacing: -0.04em;
-  color: var(--ink);
+  color: var(--text-primary);
 }
 
 .lastName {
-  font-family: var(--font-serif);
+  font-family: var(--font-accent);
   font-size: calc(var(--text-hero) * 0.9);
   font-weight: 400;
   font-style: italic;
@@ -52,7 +52,7 @@
   font-family: var(--font-body);
   font-size: var(--text-subheading);
   font-weight: 400;
-  color: var(--muted);
+  color: var(--text-muted);
   line-height: 1.6;
   margin-bottom: var(--space-xl);
 }
@@ -83,13 +83,13 @@
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  color: var(--muted);
+  color: var(--text-muted);
 }
 
 .scrollLine {
   width: 1px;
   height: 40px;
-  background-color: var(--muted-light);
+  background-color: var(--neutral-light);
   position: relative;
   overflow: hidden;
 }
@@ -113,7 +113,7 @@
   font-size: clamp(8rem, 25vw, 25rem);
   font-weight: 700;
   color: transparent;
-  -webkit-text-stroke: 1px var(--muted-light);
+  -webkit-text-stroke: 1px var(--neutral-light);
   opacity: 0.3;
   line-height: 0.8;
   pointer-events: none;

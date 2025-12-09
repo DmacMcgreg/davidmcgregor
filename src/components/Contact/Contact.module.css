@@ -1,7 +1,7 @@
 .contact {
   position: relative;
   padding: var(--space-4xl) 0;
-  background-color: var(--paper-dark);
+  background-color: var(--bg-secondary);
   overflow: hidden;
 }
 
@@ -53,7 +53,7 @@
 
 .description {
   font-size: var(--text-body);
-  color: var(--muted);
+  color: var(--text-muted);
   line-height: 1.7;
   max-width: 45ch;
 }
@@ -78,15 +78,15 @@
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  color: var(--muted);
+  color: var(--text-muted);
 }
 
 .infoValue {
   font-family: var(--font-body);
   font-size: var(--text-body);
-  color: var(--ink);
+  color: var(--text-primary);
   text-decoration: none;
-  transition: color 0.2s ease;
+  transition: color var(--duration-fast) var(--ease-primary);
 }
 
 a.infoValue:hover {
@@ -101,10 +101,10 @@ a.infoValue:hover {
 .socialLink {
   font-family: var(--font-body);
   font-size: var(--text-body);
-  color: var(--ink);
+  color: var(--text-primary);
   text-decoration: none;
   position: relative;
-  transition: color 0.2s ease;
+  transition: color var(--duration-fast) var(--ease-primary);
 }
 
 .socialLink::after {
@@ -115,7 +115,7 @@ a.infoValue:hover {
   width: 0;
   height: 1px;
   background-color: var(--accent);
-  transition: width 0.3s var(--ease-out-expo);
+  transition: width var(--duration-medium) var(--ease-primary);
 }
 
 .socialLink:hover {
@@ -128,10 +128,10 @@ a.infoValue:hover {
 
 /* Form Column */
 .formColumn {
-  background-color: var(--paper);
+  background-color: var(--bg-tertiary);
   padding: var(--space-2xl);
   border-radius: var(--border-radius-lg);
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
 }
 
 /* Decorative Text */
@@ -144,7 +144,7 @@ a.infoValue:hover {
   font-size: clamp(6rem, 20vw, 20rem);
   font-weight: 700;
   color: transparent;
-  -webkit-text-stroke: 1px var(--muted-light);
+  -webkit-text-stroke: 1px var(--border);
   opacity: 0.15;
   white-space: nowrap;
   pointer-events: none;

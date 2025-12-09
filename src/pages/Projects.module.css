@@ -51,7 +51,7 @@
 .description {
   font-family: var(--font-body);
   font-size: var(--text-subheading);
-  color: var(--muted);
+  color: var(--text-muted);
   max-width: 60ch;
   margin: 0 auto;
   line-height: 1.6;

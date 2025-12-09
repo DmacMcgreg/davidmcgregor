@@ -18,7 +18,7 @@
 
 .description {
   font-size: var(--text-body);
-  color: var(--muted);
+  color: var(--text-muted);
   max-width: 50ch;
   margin: 0 auto;
 }

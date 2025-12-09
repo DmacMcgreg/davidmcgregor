@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
+import { ThemeToggle } from '../shared/ThemeToggle';
 import styles from './Header.module.css';
 
 const navLinks = [
@@ -58,18 +59,22 @@ export function Header() {
               {link.label}
             </Link>
           ))}
+          <ThemeToggle />
         </nav>
 
-        {/* Menu Toggle */}
-        <button
-          className={`${styles.menuToggle} ${isMenuOpen ? styles.open : ''}`}
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
-          aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
-          aria-expanded={isMenuOpen}
-        >
-          <span className={styles.menuLine} />
-          <span className={styles.menuLine} />
-        </button>
+        {/* Mobile Actions */}
+        <div className={styles.mobileActions}>
+          <ThemeToggle />
+          <button
+            className={`${styles.menuToggle} ${isMenuOpen ? styles.open : ''}`}
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
+            aria-expanded={isMenuOpen}
+          >
+            <span className={styles.menuLine} />
+            <span className={styles.menuLine} />
+          </button>
+        </div>
       </div>
 
       {/* Mobile Menu */}

@@ -1,0 +1,44 @@
+.toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: var(--border-radius);
+  color: var(--text-primary);
+  cursor: var(--cursor-style, pointer);
+  transition:
+    background-color var(--duration-fast) var(--ease-primary),
+    border-color var(--duration-fast) var(--ease-primary),
+    color var(--duration-fast) var(--ease-primary),
+    transform var(--duration-fast) var(--ease-spring);
+}
+
+.toggle:hover {
+  background-color: var(--bg-tertiary);
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.toggle:active {
+  transform: scale(0.95);
+}
+
+.iconWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon {
+  width: 20px;
+  height: 20px;
+  transition: transform var(--duration-medium) var(--ease-spring);
+}
+
+.toggle:hover .icon {
+  transform: rotate(15deg);
+}

@@ -12,9 +12,9 @@
   font-weight: 500;
   text-decoration: none;
   border: none;
-  cursor: none;
+  cursor: var(--cursor-style, pointer);
   overflow: hidden;
-  transition: color 0.3s var(--ease-out-expo);
+  transition: color var(--duration-medium) var(--ease-primary);
 }
 
 @media (max-width: 768px) {
@@ -40,9 +40,9 @@
 
 /* Variants */
 .primary {
-  background-color: var(--ink);
-  color: var(--paper);
-  border-radius: 50px;
+  background-color: var(--bg-primary);
+  color: var(--text-on-dark);
+  border-radius: var(--border-radius-lg);
 }
 
 .primary .background {
@@ -50,32 +50,32 @@
 }
 
 .primary:hover {
-  color: var(--paper);
+  color: var(--text-on-dark);
 }
 
 .secondary {
   background-color: transparent;
-  color: var(--ink);
-  border: 1px solid var(--ink);
-  border-radius: 50px;
+  color: var(--text-primary);
+  border: 1px solid var(--text-primary);
+  border-radius: var(--border-radius-lg);
 }
 
 .secondary .background {
-  background-color: var(--ink);
+  background-color: var(--text-primary);
 }
 
 .secondary:hover {
-  color: var(--paper);
+  color: var(--text-on-dark);
 }
 
 .ghost {
   background-color: transparent;
-  color: var(--ink);
-  border-radius: 4px;
+  color: var(--text-primary);
+  border-radius: var(--border-radius);
 }
 
 .ghost .background {
-  background-color: var(--paper-dark);
+  background-color: var(--bg-tertiary);
 }
 
 /* Sizes */

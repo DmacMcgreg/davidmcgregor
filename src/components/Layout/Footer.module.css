@@ -1,7 +1,7 @@
 .footer {
   position: relative;
-  background-color: var(--ink);
-  color: var(--paper);
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
   overflow: hidden;
 }
 
@@ -24,12 +24,12 @@
   font-size: var(--text-display);
   font-weight: 600;
   margin-bottom: var(--space-md);
-  color: var(--paper);
+  color: var(--text-primary);
 }
 
 .ctaText {
   font-size: var(--text-body);
-  color: var(--muted-light);
+  color: var(--text-muted);
   margin-bottom: var(--space-xl);
   max-width: 40ch;
   margin-inline: auto;
@@ -43,12 +43,12 @@
   flex-wrap: wrap;
   gap: var(--space-md);
   padding-top: var(--space-lg);
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-top: 1px solid var(--border-subtle);
 }
 
 .copyright {
   font-size: var(--text-small);
-  color: var(--muted);
+  color: var(--text-muted);
 }
 
 .socialLinks {
@@ -60,9 +60,9 @@
   position: relative;
   font-size: var(--text-small);
   font-weight: 500;
-  color: var(--paper);
+  color: var(--text-primary);
   text-decoration: none;
-  transition: color 0.2s ease;
+  transition: color var(--duration-fast) var(--ease-primary);
 }
 
 .socialLink::after {
@@ -73,7 +73,7 @@
   width: 0;
   height: 1px;
   background-color: var(--accent);
-  transition: width 0.3s var(--ease-out-expo);
+  transition: width var(--duration-medium) var(--ease-primary);
 }
 
 .socialLink:hover {
@@ -87,9 +87,9 @@
 .backToTop {
   font-size: var(--text-small);
   font-weight: 500;
-  color: var(--muted);
+  color: var(--text-muted);
   text-decoration: none;
-  transition: color 0.2s ease;
+  transition: color var(--duration-fast) var(--ease-primary);
 }
 
 .backToTop:hover {

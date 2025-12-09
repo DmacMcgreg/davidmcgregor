@@ -30,14 +30,14 @@
   gap: var(--space-xs);
   font-family: var(--font-body);
   font-size: var(--text-small);
-  color: var(--muted);
+  color: var(--text-muted);
   text-decoration: none;
   margin-bottom: var(--space-xl);
-  transition: color 0.2s ease;
+  transition: color var(--duration-fast) var(--ease-primary);
 }
 
 .backLink:hover {
-  color: var(--ink);
+  color: var(--text-primary);
 }
 
 .category {
@@ -62,7 +62,7 @@
 .description {
   font-family: var(--font-body);
   font-size: var(--text-subheading);
-  color: var(--muted);
+  color: var(--text-muted);
   max-width: 55ch;
   line-height: 1.6;
   margin-bottom: var(--space-xl);
@@ -74,7 +74,7 @@
   gap: var(--space-2xl);
   margin-bottom: var(--space-xl);
   padding-top: var(--space-lg);
-  border-top: 1px solid var(--muted-light);
+  border-top: 1px solid var(--border);
 }
 
 .metaItem {
@@ -89,13 +89,13 @@
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  color: var(--muted);
+  color: var(--text-muted);
 }
 
 .metaValue {
   font-family: var(--font-body);
   font-size: var(--text-body);
-  color: var(--ink);
+  color: var(--text-primary);
 }
 
 /* Actions */
@@ -116,7 +116,7 @@
   aspect-ratio: 16 / 9;
   border-radius: var(--border-radius-lg);
   overflow: hidden;
-  background-color: var(--paper-dark);
+  background-color: var(--bg-tertiary);
 }
 
 .image {
@@ -131,21 +131,21 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, var(--ink) 0%, var(--ink-light) 100%);
+  background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
 }
 
 .placeholderText {
   font-family: var(--font-display);
   font-size: clamp(6rem, 15vw, 12rem);
   font-weight: 700;
-  color: var(--paper);
+  color: var(--text-primary);
   opacity: 0.2;
 }
 
 /* Content */
 .content {
   padding: var(--space-3xl) var(--gutter);
-  background-color: var(--paper-dark);
+  background-color: var(--bg-secondary);
 }
 
 .contentInner {
@@ -163,7 +163,7 @@
 .contentText {
   font-family: var(--font-body);
   font-size: var(--text-body);
-  color: var(--muted);
+  color: var(--text-muted);
   line-height: 1.8;
 }
 
@@ -171,7 +171,7 @@
 .navigation {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  border-top: 1px solid var(--muted-light);
+  border-top: 1px solid var(--border);
 }
 
 .navLink {
@@ -180,11 +180,11 @@
   gap: var(--space-xs);
   padding: var(--space-2xl) var(--gutter);
   text-decoration: none;
-  transition: background-color 0.3s ease;
+  transition: background-color var(--duration-medium) var(--ease-primary);
 }
 
 .navLink:first-child {
-  border-right: 1px solid var(--muted-light);
+  border-right: 1px solid var(--border);
 }
 
 .navLink:last-child {
@@ -192,7 +192,7 @@
 }
 
 .navLink:hover {
-  background-color: var(--paper-dark);
+  background-color: var(--bg-secondary);
 }
 
 .navLabel {
@@ -201,15 +201,15 @@
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  color: var(--muted);
+  color: var(--text-muted);
 }
 
 .navTitle {
   font-family: var(--font-display);
   font-size: var(--text-heading);
   font-weight: 600;
-  color: var(--ink);
-  transition: color 0.2s ease;
+  color: var(--text-primary);
+  transition: color var(--duration-fast) var(--ease-primary);
 }
 
 .navLink:hover .navTitle {
@@ -229,7 +229,7 @@
 
   .navLink:first-child {
     border-right: none;
-    border-bottom: 1px solid var(--muted-light);
+    border-bottom: 1px solid var(--border);
   }
 
   .navLink:last-child {

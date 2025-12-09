@@ -3,7 +3,7 @@
   inset: 0;
   overflow: hidden;
   pointer-events: none;
-  z-index: var(--z-shapes);
+  z-index: 1;
 }
 
 .shape {
@@ -50,7 +50,7 @@
   position: absolute;
   width: 6px;
   height: 6px;
-  background-color: var(--ink);
+  background-color: var(--text-primary);
   border-radius: 50%;
 }
 
@@ -64,7 +64,7 @@
 .lineInner {
   width: clamp(100px, 15vw, 200px);
   height: 2px;
-  background-color: var(--muted);
+  background-color: var(--neutral);
   transform: rotate(-30deg);
 }
 
