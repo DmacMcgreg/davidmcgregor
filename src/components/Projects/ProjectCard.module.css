@@ -1,55 +1,13 @@
 .card {
   perspective: 1000px;
-}
-
-/* Grid Spans */
-.standard {
-  grid-column: span 4;
-}
-
-.wide {
-  grid-column: span 8;
-}
-
-.tall {
-  grid-column: span 4;
-  grid-row: span 2;
-}
-
-.featured {
-  grid-column: span 8;
-  grid-row: span 2;
-}
-
-@media (max-width: 1024px) {
-  .standard,
-  .wide,
-  .tall,
-  .featured {
-    grid-column: span 6;
-  }
-
-  .tall,
-  .featured {
-    grid-row: span 1;
-  }
-}
-
-@media (max-width: 768px) {
-  .standard,
-  .wide,
-  .tall,
-  .featured {
-    grid-column: span 1;
-    grid-row: span 1;
-  }
+  display: inline-block;
+  width: 100%;
 }
 
 .link {
   display: block;
   text-decoration: none;
   color: inherit;
-  height: 100%;
 }
 
 /* Image */
@@ -57,39 +15,23 @@
   position: relative;
   overflow: hidden;
   border-radius: var(--border-radius-lg);
-  aspect-ratio: 16 / 10;
   background-color: var(--bg-tertiary);
-}
-
-.tall .imageWrapper,
-.featured .imageWrapper {
-  aspect-ratio: auto;
-  height: 100%;
-  min-height: 400px;
-}
-
-@media (max-width: 768px) {
-  .tall .imageWrapper,
-  .featured .imageWrapper {
-    min-height: 300px;
-  }
 }
 
 .imageInner {
   width: 100%;
-  height: 100%;
   will-change: transform, filter;
 }
 
 .image {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  height: auto;
+  display: block;
 }
 
 .placeholder {
   width: 100%;
-  height: 100%;
+  aspect-ratio: 4 / 3;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -109,8 +51,10 @@
   inset: 0;
   background: linear-gradient(
     to top,
-    var(--bg-overlay) 0%,
-    transparent 50%
+    rgba(0, 0, 0, 0.85) 0%,
+    rgba(0, 0, 0, 0.5) 40%,
+    rgba(0, 0, 0, 0.2) 70%,
+    transparent 100%
   );
   pointer-events: none;
 }
@@ -122,7 +66,7 @@
   left: 0;
   right: 0;
   padding: var(--space-lg);
-  color: var(--text-on-dark);
+  color: #ffffff;
 }
 
 .category {
@@ -134,22 +78,26 @@
   letter-spacing: 0.1em;
   color: var(--accent);
   margin-bottom: var(--space-xs);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
 }
 
 .title {
   font-family: var(--font-display);
-  font-size: var(--text-heading);
+  font-size: var(--text-subheading);
   font-weight: 600;
   margin-bottom: var(--space-xs);
   line-height: 1.2;
+  color: #ffffff;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .description {
   font-family: var(--font-body);
   font-size: var(--text-small);
-  color: var(--text-muted);
+  color: rgba(255, 255, 255, 0.9);
   max-width: 40ch;
   line-height: 1.5;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
 }
 
 .arrow {
@@ -159,26 +107,12 @@
   color: var(--accent);
 }
 
-/* Featured Card Styles */
-.featured .content {
-  padding: var(--space-xl);
-}
-
-.featured .title {
-  font-size: var(--text-display);
-}
-
-.featured .description {
-  font-size: var(--text-body);
-  max-width: 50ch;
-}
-
 @media (max-width: 768px) {
-  .featured .content {
-    padding: var(--space-lg);
+  .content {
+    padding: var(--space-md);
   }
 
-  .featured .title {
-    font-size: var(--text-heading);
+  .title {
+    font-size: var(--text-body);
   }
 }

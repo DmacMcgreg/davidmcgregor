@@ -7,10 +7,9 @@ import styles from './ProjectCard.module.css';
 interface ProjectCardProps {
   project: Project;
   index: number;
-  featured?: boolean;
 }
 
-export function ProjectCard({ project, index, featured = false }: ProjectCardProps) {
+export function ProjectCard({ project, index }: ProjectCardProps) {
   const [isHovered, setIsHovered] = useState(false);
   const cardRef = useRef<HTMLDivElement>(null);
 
@@ -53,20 +52,10 @@ export function ProjectCard({ project, index, featured = false }: ProjectCardPro
     },
   };
 
-  // Determine grid span based on featured status and index pattern
-  const getGridSpan = () => {
-    if (featured) return styles.featured;
-    // Create asymmetric pattern
-    const pattern = index % 4;
-    if (pattern === 1) return styles.wide;
-    if (pattern === 2) return styles.tall;
-    return styles.standard;
-  };
-
   return (
     <motion.div
       ref={cardRef}
-      className={`${styles.card} ${getGridSpan()}`}
+      className={styles.card}
       variants={cardVariants}
       onMouseMove={handleMouseMove}
       onMouseEnter={() => setIsHovered(true)}
@@ -78,7 +67,7 @@ export function ProjectCard({ project, index, featured = false }: ProjectCardPro
       }}
     >
       <Link
-        to={`/projects/${project.slug}`}
+        to={`/projects/${project.id}`}
         className={styles.link}
         data-cursor="View"
       >
@@ -121,7 +110,7 @@ export function ProjectCard({ project, index, featured = false }: ProjectCardPro
             animate={{ y: isHovered ? 0 : 10, opacity: isHovered ? 1 : 0.7 }}
             transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
           >
-            {project.category}
+            {project.deviceType}
           </motion.span>
 
           <motion.h3

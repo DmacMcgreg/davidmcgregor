@@ -1,6 +1,6 @@
 import { useParams, Link, Navigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { RevealText, MagneticButton, ParallaxShape } from '../components/shared';
+import { RevealText, ParallaxShape } from '../components/shared';
 import { getProjectBySlug, projects } from '../data/projects';
 import styles from './Project.module.css';
 
@@ -13,7 +13,7 @@ export function Project() {
   }
 
   // Get next and previous projects
-  const currentIndex = projects.findIndex((p) => p.slug === slug);
+  const currentIndex = projects.findIndex((p) => p.id === slug);
   const nextProject = projects[(currentIndex + 1) % projects.length];
   const prevProject = projects[(currentIndex - 1 + projects.length) % projects.length];
 
@@ -65,7 +65,7 @@ export function Project() {
           </motion.div>
 
           <RevealText delay={0.1}>
-            <span className={styles.category}>{project.category}</span>
+            <span className={styles.category}>{project.deviceType}</span>
           </RevealText>
 
           <RevealText delay={0.2}>
@@ -93,39 +93,11 @@ export function Project() {
               <span className={styles.metaValue}>{project.year}</span>
             </div>
             <div className={styles.metaItem}>
-              <span className={styles.metaLabel}>Technologies</span>
-              <span className={styles.metaValue}>
-                {project.technologies.join(', ')}
-              </span>
+              <span className={styles.metaLabel}>Platform</span>
+              <span className={styles.metaValue}>{project.deviceType}</span>
             </div>
           </motion.div>
 
-          {/* Actions */}
-          <motion.div
-            className={styles.actions}
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.6, duration: 0.8 }}
-          >
-            {project.link && (
-              <MagneticButton
-                href={project.link}
-                variant="primary"
-                cursorText="Visit"
-              >
-                View Live Site
-              </MagneticButton>
-            )}
-            {project.github && (
-              <MagneticButton
-                href={project.github}
-                variant="secondary"
-                cursorText="Code"
-              >
-                View Source
-              </MagneticButton>
-            )}
-          </motion.div>
         </div>
       </section>
 
@@ -159,7 +131,7 @@ export function Project() {
           </RevealText>
           <RevealText delay={0.1}>
             <p className={styles.contentText}>
-              {project.content || project.description}
+              {project.description}
             </p>
           </RevealText>
         </div>
@@ -168,7 +140,7 @@ export function Project() {
       {/* Navigation */}
       <section className={styles.navigation}>
         <Link
-          to={`/projects/${prevProject.slug}`}
+          to={`/projects/${prevProject.id}`}
           className={styles.navLink}
           data-cursor="Prev"
         >
@@ -177,7 +149,7 @@ export function Project() {
         </Link>
 
         <Link
-          to={`/projects/${nextProject.slug}`}
+          to={`/projects/${nextProject.id}`}
           className={styles.navLink}
           data-cursor="Next"
         >
