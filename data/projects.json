@@ -1,0 +1,172 @@
+{
+  "projects": [
+    {
+      "id": "pharma-device-training",
+      "title": "Pharmaceutical Device Training",
+      "description": "An interactive pharmaceutical training application featuring instructional video content and gamified skills practice for medical device delivery techniques.",
+      "image": "/images/projects/pharma-device-training.png",
+      "deviceType": "MacBook Pro",
+      "year": "2024"
+    },
+    {
+      "id": "teams-learning-app",
+      "title": "Teams Learning Management",
+      "description": "A Microsoft Teams-style learning management application with facilitator and learner views, real-time participant tracking, and interactive session management.",
+      "image": "/images/projects/teams-learning-app.png",
+      "deviceType": "MacBook Pro",
+      "year": "2025"
+    },
+    {
+      "id": "medical-posters-cms",
+      "title": "Medical Education CMS",
+      "description": "A medical education content management platform showcasing searchable research posters, publications, and presentations with category filtering.",
+      "image": "/images/projects/medical-posters-cms.png",
+      "deviceType": "iMac",
+      "year": "2025"
+    },
+    {
+      "id": "ar-anatomy-models",
+      "title": "AR Anatomical Models",
+      "description": "An augmented reality platform displaying interactive 3D anatomical models with selectable brain, eye, and heart visualizations in a dark-themed interface.",
+      "image": "/images/projects/ar-anatomy-models.png",
+      "deviceType": "iPad Pro",
+      "year": "2025"
+    },
+    {
+      "id": "neurology-quiz-game",
+      "title": "Neurology Quiz Game",
+      "description": "An engaging neurology knowledge quiz featuring colorful brain imagery, a leaderboard system, and timed challenges for rare disease education.",
+      "image": "/images/projects/neurology-quiz-game.png",
+      "deviceType": "iMac",
+      "year": "2024"
+    },
+    {
+      "id": "clinical-trial-dashboard",
+      "title": "Clinical Trial Dashboard",
+      "description": "A data visualization dashboard presenting global clinical trial statistics with an interactive network diagram connecting research locations and outcomes.",
+      "image": "/images/projects/clinical-trial-dashboard.png",
+      "deviceType": "MacBook Pro",
+      "year": "2024"
+    },
+    {
+      "id": "resource-library",
+      "title": "Healthcare Resource Library",
+      "description": "A resource library featuring curated educational video content for healthcare professionals with elegant pink wave design elements and card-based layouts.",
+      "image": "/images/projects/resource-library.png",
+      "deviceType": "MacBook Pro",
+      "year": "2025"
+    },
+    {
+      "id": "interactive-kol-video",
+      "title": "Interactive KOL Video",
+      "description": "An interactive medical education video player with clickable pathways and overlaid icons for exploring randomized clinical trial interpretations in atopic dermatitis.",
+      "image": "/images/projects/interactive-kol-video.png",
+      "deviceType": "iPad Pro",
+      "year": "2024"
+    },
+    {
+      "id": "nurse-locator-tool",
+      "title": "Nurse Consultant Locator",
+      "description": "A clinical nurse consultant locator application featuring zip code search functionality with vibrant magenta design and map pin visualizations.",
+      "image": "/images/projects/nurse-locator-tool.png",
+      "deviceType": "MacBook Pro",
+      "year": "2023"
+    },
+    {
+      "id": "ai-marketing-website",
+      "title": "AI Marketing Website",
+      "description": "A striking marketing website with dramatic AI-generated brain visualization, neon color effects, and a sophisticated dark theme promoting knowledge advancement.",
+      "image": "/images/projects/ai-marketing-website.png",
+      "deviceType": "iMac",
+      "year": "2024"
+    },
+    {
+      "id": "component-library-docs",
+      "title": "Component Library Documentation",
+      "description": "A comprehensive component documentation system showcasing UI elements like accordions with code examples, props documentation, and implementation usage patterns.",
+      "image": "/images/projects/component-library-docs.png",
+      "deviceType": "MacBook Pro",
+      "year": "2024"
+    },
+    {
+      "id": "text-analysis-tool",
+      "title": "Text Analysis Tool",
+      "description": "A text analysis visualization tool with image upload capabilities and word highlighting functionality for analyzing document content.",
+      "image": "/images/projects/text-analysis-tool.png",
+      "deviceType": "iPad Pro",
+      "year": "2024"
+    },
+    {
+      "id": "clinical-trial-recruitment",
+      "title": "Clinical Trial Recruitment",
+      "description": "A clinical trial recruitment website featuring healthcare professional photography, teal branding, and prominent call-to-action buttons for participant engagement.",
+      "image": "/images/projects/clinical-trial-recruitment.png",
+      "deviceType": "iPhone",
+      "year": "2024"
+    },
+    {
+      "id": "cidp-diagnostic-quiz",
+      "title": "CIDP Diagnostic Quiz",
+      "description": "An interactive diagnostic quiz challenging healthcare professionals to test their knowledge of CIDP differential diagnoses with neural pathway imagery.",
+      "image": "/images/projects/cidp-diagnostic-quiz.png",
+      "deviceType": "iPad Pro",
+      "year": "2024"
+    },
+    {
+      "id": "medical-presentation-platform",
+      "title": "Medical Presentation Platform",
+      "description": "A platform to upload, view, and share PowerPoint presentations and PDF/Word documents among team members with feedback, comments, and table of contents features.",
+      "image": "/images/projects/medical-presentation-platform.jpeg",
+      "deviceType": "MacBook Pro",
+      "year": "2021-2022"
+    },
+    {
+      "id": "alopecia-quiz-app",
+      "title": "Alopecia Areata Quiz App",
+      "description": "An online webapp for testing the knowledge of patients and healthcare providers around Alopecia Areata with interactive card-based learning modules.",
+      "image": "/images/projects/alopecia-quiz-app.jpeg",
+      "deviceType": "iPhone",
+      "year": "2021-2022"
+    },
+    {
+      "id": "product-dashboard-ar",
+      "title": "Product Dashboard with AR",
+      "description": "A product information dashboard featuring video content, augmented reality experiences, and interactive 3D graphs for medical data visualization.",
+      "image": "/images/projects/product-dashboard-ar.jpeg",
+      "deviceType": "MacBook Pro",
+      "year": "2022"
+    },
+    {
+      "id": "data-visualization-platform",
+      "title": "Data Visualization Platform",
+      "description": "A platform for parsing XLSX files and generating dynamic graphs and charts to display common medical data tied to specific reference fields.",
+      "image": "/images/projects/data-visualization-platform.jpeg",
+      "deviceType": "iPad Pro",
+      "year": "2021-2022"
+    },
+    {
+      "id": "air-miles-rewards",
+      "title": "Air Miles Rewards",
+      "description": "Created a Design Library of React.js components published on NPM with i18n translation, Server Side Rendering with NextJS, and 100% unit test coverage using best practices.",
+      "image": "/images/projects/air-miles-rewards.png",
+      "deviceType": "Desktop",
+      "year": "2018-2019"
+    },
+    {
+      "id": "toronto-star-database",
+      "title": "Toronto Star Database",
+      "description": "Built an in-browser sortable, searchable database of over 30,150 records using React with compression and lazy-loading techniques for one of Canada's largest newspapers.",
+      "image": "/images/projects/toronto-star-database.png",
+      "deviceType": "Desktop",
+      "year": "2019"
+    },
+    {
+      "id": "home-depot-checkout",
+      "title": "Home Depot Checkout",
+      "description": "Led production releases for Home Depot Orange Pay and Save Credit Card, restructuring a React.js project for performance and maintainability across multiple payments projects.",
+      "image": "/images/projects/home-depot-checkout.webp",
+      "deviceType": "Desktop",
+      "year": "2020"
+    }
+  ]
+}
