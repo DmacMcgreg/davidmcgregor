@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { motion, AnimatePresence, useMotionValue, useTransform } from 'framer-motion';
+import { motion, AnimatePresence, useMotionValue } from 'framer-motion';
 import type { Project } from '../../data/projects';
 import styles from './ProjectCarousel.module.css';
 
@@ -74,7 +74,7 @@ export function ProjectCarousel({ projects, showTitle = true }: ProjectCarouselP
       scale: 1,
       transition: {
         duration: 0.6,
-        ease: [0.32, 0.72, 0, 1],
+        ease: [0.32, 0.72, 0, 1] as const,
       },
     },
     exit: (direction: number) => ({
@@ -83,20 +83,11 @@ export function ProjectCarousel({ projects, showTitle = true }: ProjectCarouselP
       scale: 0.95,
       transition: {
         duration: 0.6,
-        ease: [0.32, 0.72, 0, 1],
+        ease: [0.32, 0.72, 0, 1] as const,
       },
     }),
   };
 
-  const progressWidth = useTransform(
-    dragX,
-    [-200, 0, 200],
-    [
-      `${((currentIndex + 1) / totalProjects) * 100}%`,
-      `${((currentIndex + 1) / totalProjects) * 100}%`,
-      `${((currentIndex + 1) / totalProjects) * 100}%`,
-    ]
-  );
 
   return (
     <section className={styles.section}>
