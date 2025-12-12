@@ -85,6 +85,11 @@
 }
 
 .backToTop {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  font-family: inherit;
   font-size: var(--text-small);
   font-weight: 500;
   color: var(--text-muted);

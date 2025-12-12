@@ -134,6 +134,63 @@ a.infoValue:hover {
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
 }
 
+/* Coming Soon */
+.comingSoon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: var(--space-2xl) var(--space-lg);
+}
+
+.comingSoonLabel {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-size: var(--text-caption);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--accent);
+  margin-bottom: var(--space-md);
+}
+
+.comingSoonTitle {
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  font-weight: 600;
+  line-height: 1.2;
+  margin-bottom: var(--space-md);
+}
+
+.comingSoonText {
+  font-size: var(--text-body);
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin-bottom: var(--space-xl);
+  max-width: 32ch;
+}
+
+.linkedinButton {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-md) var(--space-xl);
+  background-color: #0A66C2;
+  color: white;
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  font-weight: 500;
+  text-decoration: none;
+  border-radius: var(--border-radius-md);
+  transition: background-color var(--duration-fast) var(--ease-primary),
+              transform var(--duration-fast) var(--ease-primary);
+}
+
+.linkedinButton:hover {
+  background-color: #004182;
+  transform: translateY(-2px);
+}
+
 /* Decorative Text */
 .decorativeText {
   position: absolute;

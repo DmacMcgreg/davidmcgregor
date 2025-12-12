@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { useState, useEffect, useCallback } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ThemeToggle } from '../shared/ThemeToggle';
 import styles from './Header.module.css';
@@ -15,6 +15,31 @@ export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
+
+  const scrollToHash = useCallback((hash: string) => {
+    const element = document.querySelector(hash);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  }, []);
+
+  const handleNavClick = useCallback((e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    const hashIndex = href.indexOf('#');
+    if (hashIndex === -1) return;
+
+    const path = href.slice(0, hashIndex) || '/';
+    const hash = href.slice(hashIndex);
+
+    if (location.pathname === path || (path === '/' && location.pathname === '/')) {
+      e.preventDefault();
+      scrollToHash(hash);
+    } else {
+      e.preventDefault();
+      navigate(path);
+      setTimeout(() => scrollToHash(hash), 100);
+    }
+  }, [location.pathname, navigate, scrollToHash]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -55,6 +80,7 @@ export function Header() {
               to={link.href}
               className={`${styles.navLink} ${location.pathname === link.href ? styles.active : ''}`}
               data-cursor="View"
+              onClick={(e) => handleNavClick(e, link.href)}
             >
               {link.label}
             </Link>
@@ -98,7 +124,10 @@ export function Header() {
                   <Link
                     to={link.href}
                     className={styles.mobileNavLink}
-                    onClick={() => setIsMenuOpen(false)}
+                    onClick={(e) => {
+                      handleNavClick(e, link.href);
+                      setIsMenuOpen(false);
+                    }}
                   >
                     {link.label}
                   </Link>

@@ -1,15 +1,18 @@
-import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { MagneticButton, RevealText } from '../shared';
 import styles from './Footer.module.css';
 
 const socialLinks = [
-  { href: 'https://github.com/davidmcgregor', label: 'GitHub' },
-  { href: 'https://linkedin.com/in/davidmcgregor', label: 'LinkedIn' },
+  { href: 'https://github.com/DmacMcgreg/davidmcgregor', label: 'GitHub', cursorText: 'This page is open source!' },
+  { href: 'https://linkedin.com/in/david-mcgregor-canada/', label: 'LinkedIn', cursorText: 'Contact me' },
 ];
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
   return (
     <footer className={styles.footer}>
@@ -44,7 +47,7 @@ export function Footer() {
         {/* Bottom Bar */}
         <div className={styles.bottom}>
           <div className={styles.copyright}>
-            <span>{currentYear} David McGregor</span>
+            <span>&copy; {currentYear} David McGregor</span>
           </div>
 
           <nav className={styles.socialLinks}>
@@ -55,16 +58,21 @@ export function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className={styles.socialLink}
-                data-cursor="Visit"
+                data-cursor={link.cursorText}
               >
                 {link.label}
               </a>
             ))}
           </nav>
 
-          <Link to="/" className={styles.backToTop} data-cursor="Top">
+          <button
+            type="button"
+            onClick={scrollToTop}
+            className={styles.backToTop}
+            data-cursor="Top"
+          >
             Back to top
-          </Link>
+          </button>
         </div>
       </div>
 

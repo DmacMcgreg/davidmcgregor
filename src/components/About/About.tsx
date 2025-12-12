@@ -1,6 +1,6 @@
 import { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { RevealText, MagneticButton, ParallaxShape } from '../shared';
+import { RevealText, ParallaxShape } from '../shared';
 import styles from './About.module.css';
 
 const skills = [
