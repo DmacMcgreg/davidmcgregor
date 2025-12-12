@@ -1,155 +1,205 @@
 .hero {
   position: relative;
-  min-height: 100vh;
+  /* Use dvh (dynamic viewport height) for better mobile browser support */
+  min-height: 100dvh; 
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  padding: var(--space-4xl) var(--gutter);
+  /* Massive padding to ensure nothing touches edges */
+  padding: 0 var(--gutter);
 }
 
 .content {
   position: relative;
   z-index: 10;
-  text-align: center;
-  max-width: 1200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 1400px; /* Allow it to go much wider */
 }
 
+/* --- TITLE SECTION --- */
+
 .titleWrapper {
-  margin-bottom: var(--space-lg);
+  /* Use vh for dynamic spacing. 
+     This pushes the title up slightly, leaving room for text below */
+  margin-bottom: 4vh; 
+  width: 100%;
 }
 
 .title {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  line-height: 0.9;
+  flex-direction: row; /* Side by side on desktop */
+  justify-content: center;
+  flex-wrap: wrap; /* Wrap on smaller screens */
+  gap: 0.3em; /* Space between First and Last name */
+  line-height: 1.24;
+  width: 100%;
 }
 
 .firstName {
   font-family: var(--font-display);
-  font-size: var(--text-hero);
-  font-weight: 700;
-  letter-spacing: -0.04em;
+  /* Massive text that scales with viewport width */
+  font-size: clamp(3.5rem, 9vw, 9rem); 
+  font-weight: 600;
+  letter-spacing: -0.03em;
   color: var(--text-primary);
 }
 
 .lastName {
   font-family: var(--font-accent);
-  font-size: calc(var(--text-hero) * 0.9);
+  font-size: clamp(3.5rem, 9vw, 9rem);
   font-weight: 400;
   font-style: italic;
   letter-spacing: -0.02em;
   color: var(--accent);
 }
 
+/* --- TEXT SECTION --- */
+
 .subtitleWrapper {
-  max-width: 600px;
-  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.tagline {
+  font-family: var(--font-display);
+  /* Smaller than before to stop fighting the name */
+  font-size: clamp(1.5rem, 3vw, 2.5rem); 
+  font-weight: 500;
+  color: var(--text-primary); /* Switch to primary to reduce visual noise */
+  line-height: 1.2;
+  margin-bottom: 2vh;
+  letter-spacing: -0.01em;
+  text-align: center;
 }
 
 .subtitle {
   font-family: var(--font-body);
-  font-size: var(--text-subheading);
+  font-size: clamp(1rem, 1.2vw, 1.25rem);
   font-weight: 400;
   color: var(--text-muted);
   line-height: 1.6;
-  margin-bottom: var(--space-xl);
+  text-align: center;
+  
+  /* CRITICAL CHANGE: Make this much wider */
+  max-width: 800px; 
+  margin: 0 auto 5vh; /* Large gap before buttons */
 }
+
+/* --- CTA SECTION --- */
 
 .cta {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: var(--space-md);
+  gap: 2rem; /* More space between buttons */
   flex-wrap: wrap;
 }
 
-/* Scroll Indicator */
+/* --- DECORATION --- */
+
 .scrollIndicator {
   position: absolute;
-  bottom: var(--space-xl);
+  bottom: -10rem;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--space-sm);
+  gap: 1rem;
+  opacity: 0.6; /* Subtler */
 }
 
 .scrollText {
   font-family: var(--font-body);
-  font-size: var(--text-caption);
-  font-weight: 500;
+  font-size: 0.75rem;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.2em;
   color: var(--text-muted);
 }
 
 .scrollLine {
   width: 1px;
-  height: 40px;
+  height: 60px; /* Longer line adds elegance */
   background-color: var(--neutral-light);
   position: relative;
   overflow: hidden;
 }
 
 .scrollDot {
-  width: 3px;
-  height: 8px;
+  width: 100%;
+  height: 30%;
   background-color: var(--accent);
-  border-radius: 2px;
   position: absolute;
-  left: -1px;
   top: 0;
 }
 
-/* Accent Background Text */
 .accentText {
   position: absolute;
-  bottom: 5%;
-  left: -5%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* Center it behind everything */
   font-family: var(--font-display);
-  font-size: clamp(8rem, 25vw, 25rem);
+  font-size: 30vw; /* GIGANTIC */
   font-weight: 700;
   color: transparent;
   -webkit-text-stroke: 1px var(--neutral-light);
-  opacity: 0.3;
-  line-height: 0.8;
-  pointer-events: none;
-  user-select: none;
+  opacity: 0.08; /* Very faint */
   white-space: nowrap;
+  pointer-events: none;
+  z-index: 0;
 }
 
-/* Responsive */
+/* --- RESPONSIVE --- */
+
+@media (max-width: 1024px) {
+  .title {
+    flex-direction: column; /* Stack naturally on tablets/mobile */
+    align-items: flex-start; /* Left-align the stacked names */
+    gap: 0;
+  }
+
+  .firstName, .lastName {
+    line-height: 1.2; /* Room for descenders */
+  }
+
+  .lastName {
+    margin-left: 0.5em; /* Indent the last name slightly for style */
+  }
+
+  .tagline, .subtitle {
+    text-align: left;
+  }
+
+  .subtitleWrapper {
+    align-items: flex-start;
+  }
+
+  .cta {
+    justify-content: flex-start;
+  }
+}
+
 @media (max-width: 768px) {
   .hero {
-    padding-top: calc(var(--space-4xl) + 60px);
-  }
-
-  .firstName,
-  .lastName {
-    font-size: clamp(3rem, 15vw, 6rem);
-  }
-
-  .lastName {
-    font-size: clamp(2.5rem, 13vw, 5.5rem);
+    padding: var(--space-4xl) var(--gutter);
   }
 
   .subtitle {
-    font-size: var(--text-body);
+    max-width: 100%;
+    padding: 0;
   }
 
   .cta {
     flex-direction: column;
-  }
-
-  .accentText {
-    font-size: clamp(5rem, 20vw, 12rem);
-    bottom: 10%;
-  }
-
-  .scrollIndicator {
-    bottom: var(--space-lg);
+    align-items: flex-start;
+    width: 100%;
+    gap: 1rem;
   }
 }

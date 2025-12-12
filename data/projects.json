@@ -1,20 +1,21 @@
 {
   "projects": [
     {
+      "id": "ai-prd-agent",
+      "title": "AI Product Requirements Document Generative Agent",
+      "description": "A generative AI agent that can generate product requirements documents based on user input and context.",
+      "image": "/images/projects/ai-prd-agent.png",
+      "deviceType": "iPad Pro",
+      "year": "2025"
+    },
+
+    {
       "id": "pharma-device-training",
       "title": "Pharmaceutical Device Training",
       "description": "An interactive pharmaceutical training application featuring instructional video content and gamified skills practice for medical device delivery techniques.",
       "image": "/images/projects/pharma-device-training.png",
       "deviceType": "MacBook Pro",
       "year": "2024"
-    },
-    {
-      "id": "teams-learning-app",
-      "title": "Teams Learning Management",
-      "description": "A Microsoft Teams-style learning management application with facilitator and learner views, real-time participant tracking, and interactive session management.",
-      "image": "/images/projects/teams-learning-app.png",
-      "deviceType": "MacBook Pro",
-      "year": "2025"
     },
     {
       "id": "medical-posters-cms",
@@ -38,6 +39,14 @@
       "description": "An engaging neurology knowledge quiz featuring colorful brain imagery, a leaderboard system, and timed challenges for rare disease education.",
       "image": "/images/projects/neurology-quiz-game.png",
       "deviceType": "iMac",
+      "year": "2024"
+    },
+    {
+      "id": "ai-typo-analysis-tool",
+      "title": "AI Spelling and Typo Analysis Tool",
+      "description": "A text analysis visualization tool with image upload capabilities and word highlighting functionality for analyzing document content.",
+      "image": "/images/projects/ai-typo-analysis-tool.png",
+      "deviceType": "iPad Pro",
       "year": "2024"
     },
     {
@@ -68,15 +77,15 @@
       "id": "nurse-locator-tool",
       "title": "Nurse Consultant Locator",
       "description": "A clinical nurse consultant locator application featuring zip code search functionality with vibrant magenta design and map pin visualizations.",
-      "image": "/images/projects/nurse-locator-tool.png",
+      "image": "/images/projects/nurse-locator-tool.jpg",
       "deviceType": "MacBook Pro",
       "year": "2023"
     },
     {
-      "id": "ai-marketing-website",
+      "id": "marketing-website",
       "title": "AI Marketing Website",
-      "description": "A striking marketing website with dramatic AI-generated brain visualization, neon color effects, and a sophisticated dark theme promoting knowledge advancement.",
-      "image": "/images/projects/ai-marketing-website.png",
+      "description": "A striking marketing website for Red Nucleus.",
+      "image": "/images/projects/marketing-website.png",
       "deviceType": "iMac",
       "year": "2024"
     },
@@ -88,14 +97,7 @@
       "deviceType": "MacBook Pro",
       "year": "2024"
     },
-    {
-      "id": "text-analysis-tool",
-      "title": "Text Analysis Tool",
-      "description": "A text analysis visualization tool with image upload capabilities and word highlighting functionality for analyzing document content.",
-      "image": "/images/projects/text-analysis-tool.png",
-      "deviceType": "iPad Pro",
-      "year": "2024"
-    },
+
     {
       "id": "clinical-trial-recruitment",
       "title": "Clinical Trial Recruitment",
@@ -119,6 +121,14 @@
       "image": "/images/projects/medical-presentation-platform.jpeg",
       "deviceType": "MacBook Pro",
       "year": "2021-2022"
+    },
+    {
+      "id": "teams-learning-app",
+      "title": "Teams Learning Management",
+      "description": "A Microsoft Teams-style learning management application with facilitator and learner views, real-time participant tracking, and interactive session management.",
+      "image": "/images/projects/teams-learning-app.png",
+      "deviceType": "MacBook Pro",
+      "year": "2025"
     },
     {
       "id": "alopecia-quiz-app",

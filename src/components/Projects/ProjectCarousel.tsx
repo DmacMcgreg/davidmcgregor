@@ -168,14 +168,7 @@ export function ProjectCarousel({ projects, showTitle = true }: ProjectCarouselP
                 </div>
 
                 <div className={styles.slideContent}>
-                  <motion.span
-                    className={styles.deviceType}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.2, duration: 0.5 }}
-                  >
-                    {currentProject.deviceType}
-                  </motion.span>
+
 
                   <motion.h3
                     className={styles.slideTitle}

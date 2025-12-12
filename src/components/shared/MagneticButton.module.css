@@ -49,8 +49,9 @@
   background-color: var(--accent);
 }
 
-.primary:hover {
+.primary.hovered {
   color: var(--text-on-dark);
+  transition-delay: 0.15s;
 }
 
 .secondary {
@@ -61,11 +62,12 @@
 }
 
 .secondary .background {
-  background-color: var(--text-primary);
+  background-color: var(--accent);
 }
 
-.secondary:hover {
+.secondary.hovered {
   color: var(--text-on-dark);
+  transition-delay: 0.15s;
 }
 
 .ghost {

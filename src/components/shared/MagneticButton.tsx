@@ -68,7 +68,7 @@ export function MagneticButton({
       style={{ x, y }}
     >
       <Component
-        className={`${styles.button} ${styles[variant]} ${styles[size]} ${className}`}
+        className={`${styles.button} ${styles[variant]} ${styles[size]} ${isHovered ? styles.hovered : ''} ${className}`}
         data-cursor={cursorText}
         {...componentProps}
       >

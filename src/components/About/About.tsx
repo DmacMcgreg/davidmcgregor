@@ -4,9 +4,10 @@ import { RevealText, MagneticButton, ParallaxShape } from '../shared';
 import styles from './About.module.css';
 
 const skills = [
-  { category: 'Development', items: ['React', 'TypeScript', 'Node.js', 'Next.js', 'Python'] },
-  { category: 'Design', items: ['Figma', 'UI/UX', 'Motion Design', 'Branding'] },
-  { category: 'Tools', items: ['Git', 'Docker', 'AWS', 'Framer'] },
+  { category: 'AI & LLMs', items: ['Claude', 'GPT', 'Gemini', 'Context Engineering', 'Agentic Loops', 'Durable Workflows', 'MCP Tools', 'RAG', 'Vector Databases', 'Evals'] },
+  { category: 'Languages & Frameworks', items: ['TypeScript', 'React', 'Node.js', 'Python', 'Vite', 'Next.js'] },
+  { category: 'Infrastructure & Tools', items: ['Docker', 'Git', 'CI/CD', 'Cloud Deployment', 'API Design'] },
+  { category: 'Leadership', items: ['Team Management', 'Technical Architecture', 'Specification Writing', 'Stakeholder Communication'] },
 ];
 
 export function About() {
@@ -64,23 +65,25 @@ export function About() {
 
             <RevealText delay={0.1}>
               <h2 className={styles.title}>
-                Crafting digital experiences with purpose and passion
+                I build AI systems and lead the teams that ship them.
               </h2>
             </RevealText>
 
             <RevealText delay={0.2}>
               <p className={styles.bio}>
-                I'm a creative developer based in [Location], specializing in building
-                exceptional digital experiences. With a background in both design and
-                engineering, I bridge the gap between aesthetics and functionality.
+                I'm David McGregor, an AI Solutions Engineer who builds AI systems and leads the teams that ship them.
               </p>
             </RevealText>
 
             <RevealText delay={0.3}>
               <p className={styles.bio}>
-                My approach combines technical precision with creative exploration,
-                resulting in products that not only work flawlessly but also
-                create meaningful connections with users.
+                I've spent years at the intersection of engineering and leadership: architecting multi-agent workflows, writing technical specifications, and building infrastructure that scales. My background spans healthcare tech, enterprise applications, and AI-powered tools, but my focus now is on what's next.
+              </p>
+            </RevealText>
+
+            <RevealText delay={0.4}>
+              <p className={styles.bio}>
+                What sets me apart isn't just technical depth. I genuinely enjoy explaining complex ideas, helping teams understand new approaches, and bridging the gap between what AI can do and what your organization needs. I'm patient, clear, and confident, whether I'm writing code, leading a project, or talking through architecture decisions.
               </p>
             </RevealText>
 
@@ -90,7 +93,7 @@ export function About() {
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: 0.4, duration: 0.8 }}
+              transition={{ delay: 0.5, duration: 0.8 }}
             >
               {skills.map((skillGroup) => (
                 <div key={skillGroup.category} className={styles.skillGroup}>
@@ -110,7 +113,7 @@ export function About() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: 0.5, duration: 0.6 }}
+              transition={{ delay: 0.6, duration: 0.6 }}
             >
               <MagneticButton
                 href="/resume.pdf"

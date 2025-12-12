@@ -105,13 +105,6 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
 
         {/* Content */}
         <div className={styles.content}>
-          <motion.span
-            className={styles.category}
-            animate={{ y: isHovered ? 0 : 10, opacity: isHovered ? 1 : 0.7 }}
-            transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-          >
-            {project.deviceType}
-          </motion.span>
 
           <motion.h3
             className={styles.title}

@@ -1,0 +1,136 @@
+.aiEngineering {
+  position: relative;
+  padding: var(--space-4xl) 0;
+  overflow: hidden;
+  background: var(--bg-secondary);
+}
+
+.shapes {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.container {
+  position: relative;
+  z-index: 1;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+}
+
+.label {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-size: var(--text-caption);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--accent);
+  margin-bottom: var(--space-md);
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: var(--text-heading);
+  font-weight: 600;
+  line-height: 1.2;
+  margin-bottom: var(--space-2xl);
+  max-width: 800px;
+}
+
+/* Pillars Grid */
+.pillarsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-lg);
+  margin-bottom: var(--space-2xl);
+}
+
+.pillarCard {
+  background: var(--bg-primary);
+  border: 1px solid var(--border);
+  border-radius: var(--border-radius-lg);
+  padding: var(--space-xl);
+  transition: border-color 0.3s ease, transform 0.3s ease;
+}
+
+.pillarCard:hover {
+  border-color: var(--accent);
+  transform: translateY(-4px);
+}
+
+.pillarTitle {
+  font-family: var(--font-display);
+  font-size: var(--text-subheading);
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: var(--space-sm);
+}
+
+.pillarDescription {
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+/* Tools Section */
+.toolsSection {
+  padding-top: var(--space-xl);
+  border-top: 1px solid var(--border);
+}
+
+.toolsLabel {
+  font-family: var(--font-body);
+  font-size: var(--text-small);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+  margin-bottom: var(--space-md);
+}
+
+.toolsList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+}
+
+.toolTag {
+  font-family: var(--font-body);
+  font-size: var(--text-small);
+  color: var(--text-primary);
+  background: var(--bg-primary);
+  border: 1px solid var(--border);
+  border-radius: var(--border-radius-sm);
+  padding: var(--space-2xs) var(--space-sm);
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+.toolTag:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .pillarsGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .aiEngineering {
+    padding: var(--space-3xl) 0;
+  }
+
+  .title {
+    font-size: var(--text-subheading);
+  }
+
+  .pillarCard {
+    padding: var(--space-lg);
+  }
+}

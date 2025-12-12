@@ -101,7 +101,7 @@
 /* Skills */
 .skills {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: var(--space-lg);
   margin-top: var(--space-xl);
   margin-bottom: var(--space-xl);

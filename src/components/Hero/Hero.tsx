@@ -11,9 +11,13 @@ export function Hero() {
     offset: ['start start', 'end start'],
   });
 
-  const titleY = useTransform(scrollYProgress, [0, 1], [0, 150]);
-  const subtitleY = useTransform(scrollYProgress, [0, 1], [0, 100]);
+  // Parallax effects - Toned down for a more stable, premium feel
+  const titleY = useTransform(scrollYProgress, [0, 1], [0, 50]); // Reduced from 150
+  const subtitleY = useTransform(scrollYProgress, [0, 1], [0, 80]); // Reduced from 100
   const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
+  
+  // Very subtle counter-movement for the background text
+  const accentTextY = useTransform(scrollYProgress, [0, 1], [0, -50]);
 
   return (
     <section ref={containerRef} className={styles.hero}>
@@ -33,7 +37,7 @@ export function Hero() {
               text="McGregor"
               splitBy="char"
               staggerDelay={0.04}
-              delay={0.2}
+              delay={0.15}
               duration={0.8}
               className={styles.lastName}
             />
@@ -41,20 +45,29 @@ export function Hero() {
         </motion.div>
 
         <motion.div style={{ y: subtitleY, opacity }} className={styles.subtitleWrapper}>
+          <motion.h2
+            className={styles.tagline}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.5, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          >
+            AI Solutions Engineer. Architect. Leader.
+          </motion.h2>
+
           <motion.p
             className={styles.subtitle}
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.8, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ delay: 0.6, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           >
-            Creative Developer & Designer crafting digital experiences that captivate and inspire
+            I design AI workflows and multi-agent systems, lead engineering teams, and help organizations understand what's actually possible with AI today.
           </motion.p>
 
           <motion.div
             className={styles.cta}
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ delay: 0.8, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           >
             <MagneticButton href="/projects" variant="primary" size="lg" cursorText="View">
               View Projects
@@ -70,27 +83,27 @@ export function Hero() {
           className={styles.scrollIndicator}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 1.5, duration: 0.6 }}
+          transition={{ delay: 1.2, duration: 0.6 }}
           style={{ opacity }}
         >
           <span className={styles.scrollText}>Scroll</span>
           <div className={styles.scrollLine}>
             <motion.div
               className={styles.scrollDot}
-              animate={{ y: [0, 20, 0] }}
-              transition={{ duration: 1.5, repeat: Infinity, ease: 'easeInOut' }}
+              animate={{ y: ['0%', '200%'] }} // Adjusted for the longer line
+              transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
             />
           </div>
         </motion.div>
       </div>
 
-      {/* Large Accent Text */}
+      {/* Large Accent Text Background */}
       <motion.div
         className={styles.accentText}
-        style={{ y: useTransform(scrollYProgress, [0, 1], [0, -100]) }}
+        style={{ y: accentTextY }}
         aria-hidden="true"
       >
-        <span>Creative</span>
+        <span>AI Engineer</span>
       </motion.div>
     </section>
   );
