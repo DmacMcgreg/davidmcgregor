@@ -66,24 +66,21 @@ export function ProjectCarousel({ projects, showTitle = true }: ProjectCarouselP
     enter: (direction: number) => ({
       x: direction > 0 ? '100%' : '-100%',
       opacity: 0,
-      scale: 0.95,
     }),
     center: {
       x: 0,
       opacity: 1,
-      scale: 1,
       transition: {
-        duration: 0.6,
-        ease: [0.32, 0.72, 0, 1] as const,
+        duration: 0.25,
+        ease: [0.25, 0.1, 0.25, 1] as const,
       },
     },
     exit: (direction: number) => ({
       x: direction > 0 ? '-100%' : '100%',
       opacity: 0,
-      scale: 0.95,
       transition: {
-        duration: 0.6,
-        ease: [0.32, 0.72, 0, 1] as const,
+        duration: 0.2,
+        ease: [0.25, 0.1, 0.25, 1] as const,
       },
     }),
   };
@@ -151,9 +148,9 @@ export function ProjectCarousel({ projects, showTitle = true }: ProjectCarouselP
                     src={currentProject.image}
                     alt={currentProject.title}
                     className={styles.image}
-                    initial={{ scale: 1.1 }}
+                    initial={{ scale: 1.02 }}
                     animate={{ scale: 1 }}
-                    transition={{ duration: 0.8, ease: [0.32, 0.72, 0, 1] }}
+                    transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
                   />
                   <div className={styles.imageOverlay} />
                 </div>
@@ -163,27 +160,27 @@ export function ProjectCarousel({ projects, showTitle = true }: ProjectCarouselP
 
                   <motion.h3
                     className={styles.slideTitle}
-                    initial={{ opacity: 0, y: 30 }}
+                    initial={{ opacity: 0, y: 12 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.3, duration: 0.5 }}
+                    transition={{ delay: 0.1, duration: 0.2 }}
                   >
                     {currentProject.title}
                   </motion.h3>
 
                   <motion.p
                     className={styles.slideDescription}
-                    initial={{ opacity: 0, y: 30 }}
+                    initial={{ opacity: 0, y: 12 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.4, duration: 0.5 }}
+                    transition={{ delay: 0.15, duration: 0.2 }}
                   >
                     {currentProject.description}
                   </motion.p>
 
                   <motion.div
                     className={styles.viewProject}
-                    initial={{ opacity: 0, x: -20 }}
+                    initial={{ opacity: 0, x: -8 }}
                     animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.5, duration: 0.5 }}
+                    transition={{ delay: 0.2, duration: 0.2 }}
                   >
                     <span>View Project</span>
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
@@ -256,7 +253,7 @@ export function ProjectCarousel({ projects, showTitle = true }: ProjectCarouselP
               animate={{
                 width: `${((currentIndex + 1) / totalProjects) * 100}%`,
               }}
-              transition={{ duration: 0.6, ease: [0.32, 0.72, 0, 1] }}
+              transition={{ duration: 0.25, ease: [0.25, 0.1, 0.25, 1] }}
             />
           </div>
         </div>
