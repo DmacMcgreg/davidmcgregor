@@ -43,20 +43,22 @@
   padding: 0 var(--gutter);
 }
 
-/* Slide Wrapper */
-.slideWrapper {
-  position: relative;
+/* Embla Carousel */
+.emblaViewport {
   overflow: hidden;
   border-radius: var(--border-radius-lg);
 }
 
-.slide {
-  cursor: grab;
-  user-select: none;
+.emblaContainer {
+  display: flex;
+  touch-action: pan-y pinch-zoom;
+  margin-left: calc(var(--slide-spacing, 0px) * -1);
 }
 
-.slide:active {
-  cursor: grabbing;
+.emblaSlide {
+  flex: 0 0 100%;
+  min-width: 0;
+  padding-left: var(--slide-spacing, 0px);
 }
 
 .slideLink {

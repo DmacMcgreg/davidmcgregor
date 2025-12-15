@@ -1,6 +1,7 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { Link } from 'react-router-dom';
-import { motion, AnimatePresence, useMotionValue } from 'framer-motion';
+import { motion } from 'framer-motion';
+import useEmblaCarousel from 'embla-carousel-react';
 import type { Project } from '../../data/projects';
 import styles from './ProjectCarousel.module.css';
 
@@ -10,40 +11,65 @@ interface ProjectCarouselProps {
 }
 
 export function ProjectCarousel({ projects, showTitle = true }: ProjectCarouselProps) {
+  const [emblaRef, emblaApi] = useEmblaCarousel({
+    loop: true,
+    skipSnaps: false,
+    duration: 20, // Fast, snappy transitions (in frames, ~333ms at 60fps)
+  });
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [direction, setDirection] = useState(0);
-  const containerRef = useRef<HTMLDivElement>(null);
-  const dragX = useMotionValue(0);
+  const [imagesLoaded, setImagesLoaded] = useState<Set<number>>(new Set([0]));
 
-  const currentProject = projects[currentIndex];
   const totalProjects = projects.length;
 
-  const goToNext = () => {
-    setDirection(1);
-    setCurrentIndex((prev) => (prev + 1) % totalProjects);
-  };
+  // Preload images for adjacent slides
+  useEffect(() => {
+    const preloadImages = () => {
+      const indicesToLoad = [
+        currentIndex,
+        (currentIndex + 1) % totalProjects,
+        (currentIndex - 1 + totalProjects) % totalProjects,
+      ];
 
-  const goToPrev = () => {
-    setDirection(-1);
-    setCurrentIndex((prev) => (prev - 1 + totalProjects) % totalProjects);
-  };
+      indicesToLoad.forEach((idx) => {
+        if (!imagesLoaded.has(idx)) {
+          const img = new Image();
+          img.onload = () => {
+            setImagesLoaded(prev => new Set([...prev, idx]));
+          };
+          img.src = projects[idx].image;
+        }
+      });
+    };
 
-  const goToIndex = (index: number) => {
-    setDirection(index > currentIndex ? 1 : -1);
-    setCurrentIndex(index);
-  };
+    preloadImages();
+  }, [currentIndex, projects, totalProjects, imagesLoaded]);
 
-  const handleDragEnd = (_: unknown, info: { offset: { x: number }; velocity: { x: number } }) => {
-    const threshold = 50;
-    const velocity = info.velocity.x;
-    const offset = info.offset.x;
+  // Sync Embla's selected index with our state
+  const onSelect = useCallback(() => {
+    if (!emblaApi) return;
+    setCurrentIndex(emblaApi.selectedScrollSnap());
+  }, [emblaApi]);
 
-    if (offset < -threshold || velocity < -500) {
-      goToNext();
-    } else if (offset > threshold || velocity > 500) {
-      goToPrev();
-    }
-  };
+  useEffect(() => {
+    if (!emblaApi) return;
+    emblaApi.on('select', onSelect);
+    onSelect();
+    return () => {
+      emblaApi.off('select', onSelect);
+    };
+  }, [emblaApi, onSelect]);
+
+  const goToNext = useCallback(() => {
+    emblaApi?.scrollNext();
+  }, [emblaApi]);
+
+  const goToPrev = useCallback(() => {
+    emblaApi?.scrollPrev();
+  }, [emblaApi]);
+
+  const goToIndex = useCallback((index: number) => {
+    emblaApi?.scrollTo(index);
+  }, [emblaApi]);
 
   // Keyboard navigation
   useEffect(() => {
@@ -54,37 +80,7 @@ export function ProjectCarousel({ projects, showTitle = true }: ProjectCarouselP
 
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, []);
-
-  // Auto-advance (optional - uncomment to enable)
-  // useEffect(() => {
-  //   const timer = setInterval(goToNext, 5000);
-  //   return () => clearInterval(timer);
-  // }, [currentIndex]);
-
-  const slideVariants = {
-    enter: (direction: number) => ({
-      x: direction > 0 ? '100%' : '-100%',
-      opacity: 0,
-    }),
-    center: {
-      x: 0,
-      opacity: 1,
-      transition: {
-        duration: 0.25,
-        ease: [0.25, 0.1, 0.25, 1] as const,
-      },
-    },
-    exit: (direction: number) => ({
-      x: direction > 0 ? '-100%' : '100%',
-      opacity: 0,
-      transition: {
-        duration: 0.2,
-        ease: [0.25, 0.1, 0.25, 1] as const,
-      },
-    }),
-  };
-
+  }, [goToNext, goToPrev]);
 
   return (
     <section className={styles.section}>
@@ -120,83 +116,53 @@ export function ProjectCarousel({ projects, showTitle = true }: ProjectCarouselP
         </div>
       )}
 
-      <div className={styles.carouselContainer} ref={containerRef}>
-        {/* Main Slide */}
-        <div className={styles.slideWrapper}>
-          <AnimatePresence mode="wait" custom={direction}>
-            <motion.div
-              key={currentIndex}
-              custom={direction}
-              variants={slideVariants}
-              initial="enter"
-              animate="center"
-              exit="exit"
-              drag="x"
-              dragConstraints={{ left: 0, right: 0 }}
-              dragElastic={0.1}
-              onDragEnd={handleDragEnd}
-              style={{ x: dragX }}
-              className={styles.slide}
-            >
-              <Link
-                to={`/projects/${currentProject.id}`}
-                className={styles.slideLink}
-                data-cursor="View"
-              >
-                <div className={styles.imageContainer}>
-                  <motion.img
-                    src={currentProject.image}
-                    alt={currentProject.title}
-                    className={styles.image}
-                    initial={{ scale: 1.02 }}
-                    animate={{ scale: 1 }}
-                    transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
-                  />
-                  <div className={styles.imageOverlay} />
-                </div>
+      <div className={styles.carouselContainer}>
+        {/* Embla Viewport */}
+        <div className={styles.emblaViewport} ref={emblaRef}>
+          <div className={styles.emblaContainer}>
+            {projects.map((project, index) => (
+              <div key={project.id} className={styles.emblaSlide}>
+                <Link
+                  to={`/projects/${project.id}`}
+                  className={styles.slideLink}
+                  data-cursor="View"
+                >
+                  <div className={styles.imageContainer}>
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      className={styles.image}
+                      loading={index === 0 ? 'eager' : 'lazy'}
+                    />
+                    <div className={styles.imageOverlay} />
+                  </div>
 
-                <div className={styles.slideContent}>
+                  <div className={styles.slideContent}>
+                    <h3 className={styles.slideTitle}>
+                      {project.title}
+                    </h3>
 
+                    <p className={styles.slideDescription}>
+                      {project.description}
+                    </p>
 
-                  <motion.h3
-                    className={styles.slideTitle}
-                    initial={{ opacity: 0, y: 12 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.1, duration: 0.2 }}
-                  >
-                    {currentProject.title}
-                  </motion.h3>
-
-                  <motion.p
-                    className={styles.slideDescription}
-                    initial={{ opacity: 0, y: 12 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.15, duration: 0.2 }}
-                  >
-                    {currentProject.description}
-                  </motion.p>
-
-                  <motion.div
-                    className={styles.viewProject}
-                    initial={{ opacity: 0, x: -8 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.2, duration: 0.2 }}
-                  >
-                    <span>View Project</span>
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-                      <path
-                        d="M5 12H19M19 12L12 5M19 12L12 19"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </svg>
-                  </motion.div>
-                </div>
-              </Link>
-            </motion.div>
-          </AnimatePresence>
+                    <div className={styles.viewProject}>
+                      <span>View Project</span>
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                        <path
+                          d="M5 12H19M19 12L12 5M19 12L12 19"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
+                      </svg>
+                    </div>
+                  </div>
+                </Link>
+              </div>
+            ))}
+          </div>
         </div>
 
         {/* Navigation */}
