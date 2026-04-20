@@ -1,6 +1,6 @@
 import { createContext, useContext, useState, useEffect, type ReactNode } from 'react';
 
-type Theme = 'sovereign' | 'neural-lux';
+type Theme = 'v2' | 'sovereign' | 'neural-lux';
 
 interface ThemeContextValue {
   theme: Theme;
@@ -11,13 +11,13 @@ interface ThemeContextValue {
 const ThemeContext = createContext<ThemeContextValue | null>(null);
 
 const STORAGE_KEY = 'theme-preference';
-const DEFAULT_THEME: Theme = 'sovereign';
+const DEFAULT_THEME: Theme = 'v2';
 
 function getInitialTheme(): Theme {
   if (typeof window === 'undefined') return DEFAULT_THEME;
 
   const stored = localStorage.getItem(STORAGE_KEY);
-  if (stored === 'sovereign' || stored === 'neural-lux') {
+  if (stored === 'v2' || stored === 'sovereign' || stored === 'neural-lux') {
     return stored;
   }
   return DEFAULT_THEME;
@@ -36,7 +36,7 @@ export function ThemeProvider({ children }: ThemeProviderProps) {
   }, [theme]);
 
   const toggleTheme = () => {
-    setThemeState((prev) => (prev === 'sovereign' ? 'neural-lux' : 'sovereign'));
+    setThemeState((prev) => (prev === 'v2' ? 'sovereign' : prev === 'sovereign' ? 'neural-lux' : 'v2'));
   };
 
   const setTheme = (newTheme: Theme) => {
