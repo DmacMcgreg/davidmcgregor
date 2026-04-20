@@ -242,25 +242,6 @@ const PILLARS = [
   },
 ];
 
-const TOOLS = [
-  'Claude',
-  'Claude Code',
-  'Codex',
-  'GPT',
-  'Gemini',
-  'Agent Skills',
-  'MCP Servers',
-  'Agentic Memory',
-  'SFT',
-  'RLVR',
-  'LangChain',
-  'Vector DBs',
-  'RAG',
-  'Temporal',
-  'Anthropic API',
-  'OpenAI',
-];
-
 export function V2Pillars({ shaderIntensity = 'high' }: ShaderSectionProps) {
   return (
     <section className="pillars" id="ai">
@@ -320,16 +301,6 @@ export function V2Pillars({ shaderIntensity = 'high' }: ShaderSectionProps) {
           ))}
         </div>
 
-        <Reveal className="tools">
-          <div className="tools__label">Tools &amp; Technologies</div>
-          <div className="tools__list">
-            {TOOLS.map((t) => (
-              <span key={t} className="tools__tag">
-                {t}
-              </span>
-            ))}
-          </div>
-        </Reveal>
       </div>
     </section>
   );

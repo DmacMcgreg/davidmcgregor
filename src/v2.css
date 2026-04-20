@@ -807,45 +807,6 @@ section {
 
 .pillar:hover .pillar__accent { transform: scaleX(1); }
 
-/* Tools */
-.tools {
-  margin-top: var(--space-2xl);
-  padding-top: var(--space-lg);
-  border-top: 1px solid var(--border);
-}
-
-.tools__label {
-  font-family: var(--font-mono);
-  font-size: 0.6875rem;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--gold);
-  margin-bottom: var(--space-md);
-  font-weight: 500;
-}
-
-.tools__list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-xs) var(--space-md);
-}
-
-.tools__tag {
-  font-family: var(--font-mono);
-  font-size: 0.8125rem;
-  color: var(--paper);
-  opacity: 0.8;
-  padding: 0.35rem 0;
-  letter-spacing: 0.02em;
-  transition: all 0.3s;
-  border-bottom: 1px solid var(--border);
-}
-
-.tools__tag:hover {
-  color: var(--gold);
-  border-color: var(--gold);
-}
-
 /* =========================================================
    Projects
    ========================================================= */
