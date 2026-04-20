@@ -206,22 +206,22 @@ export function V2About() {
                 and what your organization needs.
               </p>
             </Reveal>
-            <Reveal delay={500}>
-              <div className="about__skills">
-                {SKILLS.map((g) => (
-                  <div key={g.category} className="about__skill-group">
-                    <h4>{g.category}</h4>
-                    <ul className="about__skill-list">
-                      {g.items.map((s) => (
-                        <li key={s}>{s}</li>
-                      ))}
-                    </ul>
-                  </div>
-                ))}
-              </div>
-            </Reveal>
           </div>
         </div>
+        <Reveal delay={200} className="about__skills-wrap">
+          <div className="about__skills">
+            {SKILLS.map((g) => (
+              <div key={g.category} className="about__skill-group">
+                <h4>{g.category}</h4>
+                <ul className="about__chip-list">
+                  {g.items.map((s) => (
+                    <li key={s}>{s}</li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </Reveal>
       </div>
     </section>
   );
@@ -460,16 +460,6 @@ export function V2Contact({ shaderIntensity = 'high' }: ShaderSectionProps) {
           </h2>
         </Reveal>
         <Reveal delay={200}>
-          <a
-            href="mailto:hello@davidmcgregor.site"
-            className="contact__email"
-            data-cursor-label="Email"
-          >
-            <span>hello@davidmcgregor.site</span>
-            <span className="contact__email-arrow">↗</span>
-          </a>
-        </Reveal>
-        <Reveal delay={250}>
           <V2ContactForm />
         </Reveal>
         <Reveal delay={300}>
