@@ -163,9 +163,13 @@ export function V2About() {
           <div>
             <Reveal>
               <div className="about__portrait">
-                <div className="about__portrait-inner">dm</div>
+                <img
+                  className="about__portrait-image"
+                  src="/images/profile-photo.jpg"
+                  alt="David McGregor"
+                />
                 <div className="about__portrait-meta">
-                  <span>Portrait placeholder</span>
+                  <span>David McGregor</span>
                   <span>01/01</span>
                 </div>
               </div>
