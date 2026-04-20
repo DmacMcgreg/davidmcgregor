@@ -460,16 +460,6 @@ export function V2Contact({ shaderIntensity = 'high' }: ShaderSectionProps) {
           </h2>
         </Reveal>
         <Reveal delay={200}>
-          <a
-            href="mailto:hello@davidmcgregor.site"
-            className="contact__email"
-            data-cursor-label="Email"
-          >
-            <span>hello@davidmcgregor.site</span>
-            <span className="contact__email-arrow">↗</span>
-          </a>
-        </Reveal>
-        <Reveal delay={250}>
           <V2ContactForm />
         </Reveal>
         <Reveal delay={300}>
