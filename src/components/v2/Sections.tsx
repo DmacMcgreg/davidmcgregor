@@ -202,22 +202,22 @@ export function V2About() {
                 and what your organization needs.
               </p>
             </Reveal>
-            <Reveal delay={500}>
-              <div className="about__skills">
-                {SKILLS.map((g) => (
-                  <div key={g.category} className="about__skill-group">
-                    <h4>{g.category}</h4>
-                    <ul className="about__skill-list">
-                      {g.items.map((s) => (
-                        <li key={s}>{s}</li>
-                      ))}
-                    </ul>
-                  </div>
-                ))}
-              </div>
-            </Reveal>
           </div>
         </div>
+        <Reveal delay={200} className="about__skills-wrap">
+          <div className="about__skills">
+            {SKILLS.map((g) => (
+              <div key={g.category} className="about__skill-group">
+                <h4>{g.category}</h4>
+                <ul className="about__chip-list">
+                  {g.items.map((s) => (
+                    <li key={s}>{s}</li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </Reveal>
       </div>
     </section>
   );

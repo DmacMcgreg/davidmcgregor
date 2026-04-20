@@ -606,13 +606,16 @@ section {
   font-family: var(--font-sans);
 }
 
-.about__skills {
+.about__skills-wrap {
   margin-top: var(--space-xl);
   padding-top: var(--space-lg);
   border-top: 1px solid var(--border-strong);
+}
+
+.about__skills {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: var(--space-lg);
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: var(--space-lg) var(--space-xl);
 }
 
 .about__skill-group h4 {
@@ -625,36 +628,64 @@ section {
   font-weight: 500;
 }
 
-.about__skill-list {
+.about__chip-list {
   list-style: none;
   display: flex;
-  flex-direction: column;
-  gap: 0.35rem;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  padding: 0;
+  margin: 0;
 }
 
-.about__skill-list li {
+.about__chip-list li {
   font-family: var(--font-sans);
-  font-size: 0.875rem;
+  font-size: 0.8125rem;
+  line-height: 1;
   color: var(--paper);
-  opacity: 0.75;
-  padding-left: 1rem;
-  position: relative;
-  transition: opacity 0.3s, transform 0.3s;
+  padding: 0.4rem 0.7rem;
+  border: 1px solid var(--border-strong);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.02);
+  opacity: 0;
+  transform: translateY(6px);
+  transition:
+    opacity 0.5s var(--ease-out-expo),
+    transform 0.5s var(--ease-out-expo),
+    border-color 0.25s,
+    background 0.25s,
+    color 0.25s;
 }
 
-.about__skill-list li::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 0.625rem;
-  width: 6px;
-  height: 1px;
-  background: var(--gold);
-  transition: width 0.3s;
+.reveal.is-visible .about__chip-list li {
+  opacity: 0.85;
+  transform: translateY(0);
 }
 
-.about__skill-list li:hover { opacity: 1; transform: translateX(4px); }
-.about__skill-list li:hover::before { width: 10px; }
+.about__chip-list li:hover {
+  opacity: 1;
+  border-color: var(--gold);
+  background: rgba(212, 175, 55, 0.08);
+  color: var(--gold);
+}
+
+.reveal.is-visible .about__chip-list li:nth-child(1)  { transition-delay: 0.00s, 0.00s, 0s, 0s, 0s; }
+.reveal.is-visible .about__chip-list li:nth-child(2)  { transition-delay: 0.03s, 0.03s, 0s, 0s, 0s; }
+.reveal.is-visible .about__chip-list li:nth-child(3)  { transition-delay: 0.06s, 0.06s, 0s, 0s, 0s; }
+.reveal.is-visible .about__chip-list li:nth-child(4)  { transition-delay: 0.09s, 0.09s, 0s, 0s, 0s; }
+.reveal.is-visible .about__chip-list li:nth-child(5)  { transition-delay: 0.12s, 0.12s, 0s, 0s, 0s; }
+.reveal.is-visible .about__chip-list li:nth-child(6)  { transition-delay: 0.15s, 0.15s, 0s, 0s, 0s; }
+.reveal.is-visible .about__chip-list li:nth-child(7)  { transition-delay: 0.18s, 0.18s, 0s, 0s, 0s; }
+.reveal.is-visible .about__chip-list li:nth-child(8)  { transition-delay: 0.21s, 0.21s, 0s, 0s, 0s; }
+.reveal.is-visible .about__chip-list li:nth-child(9)  { transition-delay: 0.24s, 0.24s, 0s, 0s, 0s; }
+.reveal.is-visible .about__chip-list li:nth-child(10) { transition-delay: 0.27s, 0.27s, 0s, 0s, 0s; }
+.reveal.is-visible .about__chip-list li:nth-child(11) { transition-delay: 0.30s, 0.30s, 0s, 0s, 0s; }
+.reveal.is-visible .about__chip-list li:nth-child(n+12) { transition-delay: 0.33s, 0.33s, 0s, 0s, 0s; }
+
+[data-motion="reduced"] .about__chip-list li {
+  opacity: 0.85;
+  transform: none;
+  transition: none;
+}
 
 /* =========================================================
    Pillars (AI Engineering)
