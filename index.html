@@ -3,14 +3,14 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>David McGregor</title>
+    <title>David McGregor — AI Solutions Engineer</title>
 
     <!-- Primary Meta Tags -->
-    <meta name="title" content="David McGregor" />
-    <meta name="description" content="David McGregor - Portfolio" />
+    <meta name="title" content="David McGregor — AI Solutions Engineer" />
+    <meta name="description" content="David McGregor — AI Solutions Engineer who ships. Editorial portfolio of shaders, agents, and applied AI work." />
     <meta name="author" content="David McGregor" />
     <meta name="robots" content="index, follow" />
-    <meta name="theme-color" content="#0A1628" />
+    <meta name="theme-color" content="#0D1B2E" />
     <link rel="canonical" href="https://davidmcgregor.site" />
 
     <!-- Favicon -->
@@ -20,8 +20,8 @@
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://davidmcgregor.site" />
-    <meta property="og:title" content="David McGregor" />
-    <meta property="og:description" content="David McGregor - Portfolio" />
+    <meta property="og:title" content="David McGregor — AI Solutions Engineer" />
+    <meta property="og:description" content="David McGregor — AI Solutions Engineer who ships. Editorial portfolio of shaders, agents, and applied AI work." />
     <meta property="og:image" content="https://davidmcgregor.site/og-image.png" />
     <meta property="og:site_name" content="David McGregor" />
     <meta property="og:locale" content="en_US" />
@@ -29,8 +29,8 @@
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:url" content="https://davidmcgregor.site" />
-    <meta name="twitter:title" content="David McGregor" />
-    <meta name="twitter:description" content="David McGregor - Portfolio" />
+    <meta name="twitter:title" content="David McGregor — AI Solutions Engineer" />
+    <meta name="twitter:description" content="David McGregor — AI Solutions Engineer who ships. Editorial portfolio of shaders, agents, and applied AI work." />
     <meta name="twitter:image" content="https://davidmcgregor.site/twitter-image.png" />
 
     <!-- Anti-flash: Apply theme before render -->
@@ -43,16 +43,49 @@
       })();
     </script>
 
-    <!-- Preload fonts for Sovereign theme -->
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Playfair+Display:ital@0;1&display=swap" as="style" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Playfair+Display:ital@0;1&display=swap" />
+    <!-- v2 design tweaks (read by app at runtime) -->
+    <script>
+      window.TWEAKS = {
+        accentHue: "gold",
+        projectsLayout: "carousel",
+        density: "regular",
+        motion: "full",
+        cursor: "on",
+        shaderIntensity: "high",
+        grain: true,
+        theme: "dark"
+      };
+    </script>
 
-    <!-- Preload fonts for Neural Lux theme -->
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" as="style" />
+    <!-- Fonts: v2 editorial pair (Fraunces + Inter + JetBrains Mono) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,800;1,9..144,300;1,9..144,400;1,9..144,500;1,9..144,600&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" />
+
+    <!-- Existing theme fonts (kept for backwards compatibility with theme system) -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Playfair+Display:ital@0;1&display=swap" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" />
   </head>
   <body>
+    <noscript>
+      <div style="padding:4rem 2rem; font-family: 'Fraunces', Georgia, serif; color:#EDE6D3; background:#0D1B2E; min-height:100vh;">
+        <h1 style="font-style: italic; font-weight: 400;">David McGregor</h1>
+        <p style="font-family: 'Inter', system-ui, sans-serif; color:#D4A24C;">AI Solutions Engineer. Please enable JavaScript to view this site.</p>
+      </div>
+    </noscript>
+
     <div id="root"></div>
+
+    <!-- Grain filter for editorial overlay (referenced from CSS) -->
+    <svg style="position:fixed;width:0;height:0;pointer-events:none;" aria-hidden="true">
+      <defs>
+        <filter id="grain-filter">
+          <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" stitchTiles="stitch" />
+          <feColorMatrix values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.6 0" />
+        </filter>
+      </defs>
+    </svg>
+
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
