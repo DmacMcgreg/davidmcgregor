@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, type FormEvent } from 'react';
 import { MagneticButton, ParallaxShape, Reveal, StaggerText } from './Primitives';
 import { ShaderAurora, ShaderField, ShaderHero, type ShaderIntensity } from './Shaders';
 
@@ -163,9 +163,13 @@ export function V2About() {
           <div>
             <Reveal>
               <div className="about__portrait">
-                <div className="about__portrait-inner">dm</div>
+                <img
+                  className="about__portrait-image"
+                  src="/images/profile-photo.jpg"
+                  alt="David McGregor"
+                />
                 <div className="about__portrait-meta">
-                  <span>Portrait placeholder</span>
+                  <span>David McGregor</span>
                   <span>01/01</span>
                 </div>
               </div>
@@ -242,25 +246,6 @@ const PILLARS = [
   },
 ];
 
-const TOOLS = [
-  'Claude',
-  'Claude Code',
-  'Codex',
-  'GPT',
-  'Gemini',
-  'Agent Skills',
-  'MCP Servers',
-  'Agentic Memory',
-  'SFT',
-  'RLVR',
-  'LangChain',
-  'Vector DBs',
-  'RAG',
-  'Temporal',
-  'Anthropic API',
-  'OpenAI',
-];
-
 export function V2Pillars({ shaderIntensity = 'high' }: ShaderSectionProps) {
   return (
     <section className="pillars" id="ai">
@@ -320,18 +305,139 @@ export function V2Pillars({ shaderIntensity = 'high' }: ShaderSectionProps) {
           ))}
         </div>
 
-        <Reveal className="tools">
-          <div className="tools__label">Tools &amp; Technologies</div>
-          <div className="tools__list">
-            {TOOLS.map((t) => (
-              <span key={t} className="tools__tag">
-                {t}
-              </span>
-            ))}
-          </div>
-        </Reveal>
       </div>
     </section>
+  );
+}
+
+type ContactFormStatus = 'idle' | 'submitting' | 'success' | 'error';
+
+const FORMSUBMIT_ENDPOINT =
+  'https://formsubmit.co/ajax/davejmcg+personalsite@gmail.com';
+
+function V2ContactForm() {
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [message, setMessage] = useState('');
+  const [honeypot, setHoneypot] = useState('');
+  const [status, setStatus] = useState<ContactFormStatus>('idle');
+  const [errorMsg, setErrorMsg] = useState('');
+
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (honeypot) return;
+    setStatus('submitting');
+    setErrorMsg('');
+
+    try {
+      const res = await fetch(FORMSUBMIT_ENDPOINT, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+        body: JSON.stringify({
+          name,
+          email,
+          message,
+          _subject: `New message from ${name || 'portfolio visitor'}`,
+          _template: 'table',
+          _captcha: 'false',
+        }),
+      });
+
+      const data = await res.json().catch(() => ({}));
+      if (res.ok && (data.success === 'true' || data.success === true)) {
+        setStatus('success');
+        setName('');
+        setEmail('');
+        setMessage('');
+      } else {
+        setStatus('error');
+        setErrorMsg(
+          typeof data?.message === 'string'
+            ? data.message
+            : 'Something went wrong. Please try again or email directly.'
+        );
+      }
+    } catch {
+      setStatus('error');
+      setErrorMsg('Network error. Please try again or email directly.');
+    }
+  };
+
+  return (
+    <form className="contact__form" onSubmit={handleSubmit} noValidate>
+      <div className="contact__form-row">
+        <label className="contact__form-field">
+          <span className="contact__form-label">Name</span>
+          <input
+            type="text"
+            name="name"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            required
+            autoComplete="name"
+            className="contact__form-input"
+            disabled={status === 'submitting'}
+          />
+        </label>
+        <label className="contact__form-field">
+          <span className="contact__form-label">Email</span>
+          <input
+            type="email"
+            name="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+            autoComplete="email"
+            className="contact__form-input"
+            disabled={status === 'submitting'}
+          />
+        </label>
+      </div>
+      <label className="contact__form-field">
+        <span className="contact__form-label">Message</span>
+        <textarea
+          name="message"
+          value={message}
+          onChange={(e) => setMessage(e.target.value)}
+          required
+          rows={5}
+          className="contact__form-input contact__form-textarea"
+          disabled={status === 'submitting'}
+        />
+      </label>
+      <input
+        type="text"
+        name="_honey"
+        value={honeypot}
+        onChange={(e) => setHoneypot(e.target.value)}
+        tabIndex={-1}
+        autoComplete="off"
+        aria-hidden="true"
+        className="contact__form-honey"
+      />
+      <div className="contact__form-actions">
+        <button
+          type="submit"
+          className="btn contact__form-submit"
+          disabled={status === 'submitting'}
+        >
+          {status === 'submitting' ? 'Sending…' : 'Send message'}
+        </button>
+        {status === 'success' && (
+          <p className="contact__form-status contact__form-status--success" role="status">
+            Thanks — your message is on its way.
+          </p>
+        )}
+        {status === 'error' && (
+          <p className="contact__form-status contact__form-status--error" role="alert">
+            {errorMsg}
+          </p>
+        )}
+      </div>
+    </form>
   );
 }
 
@@ -362,6 +468,9 @@ export function V2Contact({ shaderIntensity = 'high' }: ShaderSectionProps) {
             <span>hello@davidmcgregor.site</span>
             <span className="contact__email-arrow">↗</span>
           </a>
+        </Reveal>
+        <Reveal delay={250}>
+          <V2ContactForm />
         </Reveal>
         <Reveal delay={300}>
           <div className="contact__grid">
