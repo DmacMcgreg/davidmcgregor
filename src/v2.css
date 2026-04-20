@@ -1384,6 +1384,105 @@ section {
 .contact__card-value a { transition: color 0.3s; }
 .contact__card-value a:hover { color: var(--gold); }
 
+.contact__form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  margin-top: var(--space-2xl);
+  max-width: 640px;
+}
+
+.contact__form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-md);
+}
+
+@media (max-width: 640px) {
+  .contact__form-row { grid-template-columns: 1fr; }
+}
+
+.contact__form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.contact__form-label {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 500;
+}
+
+.contact__form-input {
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  color: var(--paper);
+  background: rgba(7, 9, 14, 0.45);
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  padding: 0.85rem 1rem;
+  transition: border-color 0.3s, background 0.3s;
+  width: 100%;
+}
+
+.contact__form-input:focus {
+  outline: none;
+  border-color: var(--gold);
+  background: rgba(7, 9, 14, 0.65);
+}
+
+.contact__form-input:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.contact__form-textarea {
+  resize: vertical;
+  min-height: 140px;
+  font-family: var(--font-sans);
+  line-height: 1.5;
+}
+
+.contact__form-honey {
+  position: absolute;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.contact__form-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-lg);
+  flex-wrap: wrap;
+  margin-top: var(--space-xs);
+}
+
+.contact__form-submit {
+  cursor: pointer;
+}
+
+.contact__form-submit:disabled {
+  opacity: 0.6;
+  cursor: wait;
+}
+
+.contact__form-status {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  margin: 0;
+}
+
+.contact__form-status--success { color: var(--gold); }
+.contact__form-status--error { color: #ff9a8b; }
+
 /* =========================================================
    Footer
    ========================================================= */
